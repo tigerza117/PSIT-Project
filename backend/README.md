@@ -12,6 +12,7 @@ Setup database
 
 '''
 from app_main import db
+
 db.create_all()
 '''
 
