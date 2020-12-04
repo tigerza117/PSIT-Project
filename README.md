@@ -3,10 +3,20 @@
 [Trello](https://trello.com/b/HdKdJiv1/workflow)
 
 ### Feature
-- [ ] Login
-- [ ] Register
-- [ ] OAuth
-- [ ] Order
+- [ ] OAuth(Gmail Login/Register)
+- [ ] Auth
+- [ ] Ordering
 - [ ] Notification
-- [ ] Admin
-- [ ] Merchant
+- [ ] Admin control
+- [ ] Merchant control
+
+### Pages
+ - [ ] Login
+ - [ ] Register
+ - [ ] Verify
+ - [ ] Recovery
+ - [ ] Admin
+ - [ ] Merchant
+ - [ ] Ordering
+ - [ ] Landing
+ - [ ] Home
