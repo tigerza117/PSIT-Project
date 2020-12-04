@@ -2,14 +2,14 @@
 
 ## Project setup
 
-Install dependencies
+### Install dependencies
 
 '''
 pip install -r requirements.txt
 '''
 
 
-## Setup database
+### Setup database
 
 '''
 
