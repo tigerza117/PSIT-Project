@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+<!--header-->
+{% block head %}
+{% endblock %}
+
+<!--body-->
+{% block body %}
+<div class="content">
+    <div align="center"><h1>Task Manager</h1></div>
+    <table width="600" class="table table-striped">
+        <thead>
+            <tr>
+                <th width="450"><div align="center">Task</div></th>
+                <th width="150">Added</th>
+                <th width="50">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.content}}</td>
+                    <td>{{ task.date_created.strftime("%X")}}</td>
+                    <td>
+                        <a href="/update/{{task.id}}">Update</a>
+                        <a href="/delete/{{task.id}}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="Add Task">
+    </form>
+</div>
+{% endblock %}
