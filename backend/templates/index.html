@@ -8,32 +8,30 @@
 <!--body-->
 {% block body %}
 <div class="content">
-    <div align="center"><h1>Task Manager</h1></div>
+    <div align="center"><h1>User manager</h1></div>
     <table width="600" class="table table-striped">
         <thead>
             <tr>
-                <th width="450"><div align="center">Task</div></th>
-                <th width="150">Added</th>
+                <th width="150"><div align="center">E-mail</div></th>
+                <th width="150">Firstname</th>
+                <th width="150">Lastname</th>
+                <th width="100">Password</th>
                 <th width="50">Action</th>
             </tr>
         </thead>
         <tbody>
-            {% for task in tasks %}
+            {% for user in table %}
                 <tr>
-                    <td>{{ task.content}}</td>
-                    <td>{{ task.date_created.strftime("%X")}}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.password }}</td>
                     <td>
-                        <a href="/update/{{task.id}}">Update</a>
-                        <a href="/delete/{{task.id}}">Delete</a>
+                        <a href="/delete/{{user.id}}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
-    </form>
 </div>
 {% endblock %}

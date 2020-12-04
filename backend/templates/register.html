@@ -3,6 +3,7 @@
 
 <!--header-->
 {% block head %}
+<title>Registration</title>
 {% endblock %}
 
 <!--body-->
@@ -14,27 +15,36 @@
           <div class="column is-half">
             <form method="POST">
               <div class="field">
-                <label class="label">Username</label>
+                <label class="label">email</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" name="username" placeholder="Username">
+                  <input class="input" type="text" name="email" placeholder="email">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
                 </div>
               </div>
               <div class="field">
-                <label class="label">Password</label>
+                <label class="label">firstname</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" type="text" name="firstname" placeholder="firstname">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">lastname</label>
                 <p class="control has-icons-left">
-                  <input class="input" type="password" name="password" placeholder="Password">
+                  <input class="input" type="lastname" name="lastname" placeholder="lastname">
                   <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                   </span>
                 </p>
               </div>
               <div class="field">
-                <label class="label">Student Number</label>
+                <label class="label">password</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" name="student" placeholder="student">
+                  <input class="input" type="text" name="password" placeholder="password">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -43,7 +53,7 @@
               <div class="field">
                 <p class="control">
                   <button type="submit" class="button is-success">
-                    Sign Up
+                    register
                   </button>
                 </p>
               </div>
