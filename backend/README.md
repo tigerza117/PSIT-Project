@@ -3,11 +3,13 @@
 ## Project setup
 
 Install dependencies
+
 '''
 pip install -r requirements.txt
 '''
 
 Setup database
+
 '''
 from app_main import db
 db.create_all()
