@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+<!--header-->
+{% block head %}
+{% endblock %}
+
+<!--body-->
+{% block body %}
+<div class="content">
+    <div align="center"><h1>Food Order</h1></div>
+    <div class="form">
+        <form action="/order" method="POST">
+            <input type="text" name="store_id" id="store_id" placeholder="store">
+            <input type="text" name="menu" id="menu" placeholder="menu">
+            <input type="text" name="extra" id="extra" placeholder="extra">
+            <input type="submit" value="OrderingFood">
+        </form>
+    </div>
+</div>
+{% endblock %}

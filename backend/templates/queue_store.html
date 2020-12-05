@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+<!--header-->
+{% block head %}
+{% endblock %}
+
+<!--body-->
+{% block body %}
+<div class="content">
+    <div align="center"><h1>Store Queue manager</h1></div>
+    <table width="600" class="table table-striped">
+        <thead>
+            <tr>
+                <th width="50"><div align="center">Queue Store id #{{ check }}</div></th>
+                <th width="100">Menu</th>
+                <th width="400">Extra</th>
+                <th width="50">Custumer id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in table if order.store_id == check %}
+                <tr>
+                    <td>{{ order.queue_id }}</td>
+                    <td>{{ order.menu }}</td>
+                    <td>{{ order.extra }}</td>
+                    <td>{{ order.custumer_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
