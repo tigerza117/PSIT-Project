@@ -5,7 +5,7 @@
 ### Feature
 - [ready to compile] OAuth(Gmail Login/Register)
 - [ ] Auth
-- [start] Ordering
+- [unfinish but ready] Ordering
 - [ ] Notification
 - [ ] Admin control
 - [ ] Merchant control
