@@ -3,7 +3,7 @@
 [Trello](https://trello.com/b/HdKdJiv1/workflow)
 
 ### Feature
-- [ready] OAuth(Gmail Login/Register)
+- [ready to compile] OAuth(Gmail Login/Register)
 - [ ] Auth
 - [start] Ordering
 - [ ] Notification
