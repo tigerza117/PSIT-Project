@@ -1,10 +1,88 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mock designk</title>
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="build/index.css">
     </head>
+    <style>
+    </style>
     <body>
-        <div class="container mx-auto">
+        <!--Navbar-->
+        <div class="fixed z-20 flex-wrap m-auto top-0 animated flex w-full p-4 px-6 bg-green-500 items-center place-content-between">
+            <!--Logo-->
+            <div class="font-bold text-4xl text-white">
+                LME
+            </div>
+            <!--menu-->
+            <div>
+                <ul class="flex space-x-8">
+                    <li>
+                        <button class="transition duration-500 p-2 hover:bg-red-500 bg-white rounded">Sign-In</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto mt-24 mb-4">
+            <!--Body-->
+            <div class="mt-4 grid md:grid-cols-2 xl:grid-cols-3 gap-4 px-4">
+                <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <img class="object-cover h-64 w-full rounded-lg" src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg" />
+                    <!--Card-->
+                    <div class="absolute inset-x-0 bottom-0 w-full">
+                        <div class="p-4 bg-white mx-2 mb-2 rounded-lg">
+                            <div class="font-semibold text-lg">
+                                ร้านป้าน้อย
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                อร่อยทุกอย่าง
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <img class="object-cover h-64 w-full  rounded-lg" src="https://img.taste.com.au/00ptu0Py/taste/2016/11/linguine-with-prawns-chilli-garlic-rocket-95151-1.jpeg" />
+                    <!--Card-->
+                    <div class="absolute inset-x-0 bottom-0 w-full">
+                        <div class="p-4 bg-white mx-2 mb-2 rounded-lg">
+                            <div class="font-semibold text-lg">
+                                ร้านน้องไทเกอร์
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                ทำด้วยใจ ใส่ใจทุกบริการ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <img class="object-cover h-64 w-full  rounded-lg" src="https://www.lifelinescreening.com/-/media/project/life-line-screening/life-line-screening/6-health-education/articles/diet-and-nutrition/fruits-and-vegetables.jpg" />
+                    <!--Card-->
+                    <div class="absolute inset-x-0 bottom-0 w-full">
+                        <div class="p-4 bg-white mx-2 mb-2 rounded-lg">
+                            <div class="font-semibold text-lg">
+                                ร้านน้อนมิ้ง
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                น่ารักมาก
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <img class="object-cover h-64 w-full  rounded-lg" src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg" />
+                    <!--Card-->
+                    <div class="absolute inset-x-0 bottom-0 w-full">
+                        <div class="p-4 bg-white mx-2 mb-2 rounded-lg">
+                            <div class="font-semibold text-lg">
+                                ร้านมุกมาก
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                ดุที่สุดอร่อยมากๆ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
