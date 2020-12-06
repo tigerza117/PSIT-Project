@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
+import Shop from "./views/Shop.vue";
 import Merchant from "./views/Merchant.vue";
 import Order from "./views/Order.vue";
 import Admin from "./views/Admin.vue";
@@ -23,6 +24,10 @@ export default new Router({
     {
       path: "/register",
       component: Register,
+    },
+    {
+      path: "/shop",
+      component: Shop,
     },
     {
       path: "/merchant",
