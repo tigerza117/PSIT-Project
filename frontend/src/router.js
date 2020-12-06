@@ -4,6 +4,8 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Merchant from "./views/Merchant.vue";
+import Order from "./views/Order.vue";
+import Admin from "./views/Admin.vue";
 
 Vue.use(Router);
 
@@ -28,11 +30,11 @@ export default new Router({
     },
     {
       path: "/order",
-      component: Home,
+      component: Order,
     },
     {
       path: "/admin",
-      component: Home,
+      component: Admin,
     },
   ],
 });
