@@ -1,11 +1,8 @@
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__)
-
 
 @app.route('/')
 def home():
-    return "This is home page "
+    return "This is home page"
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run(debug=True)
