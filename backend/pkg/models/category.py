@@ -1,17 +1,21 @@
-from typing import Type, TypeVar
+from sqlalchemy.sql.schema import ForeignKey
 from . import db
 
-class Shop(db.Model):
+class Category(db.Model):
     """
     shop models
     """
-    __tablename__ = 'shop'
+    __tablename__ = 'categorys'
     id = db.Column(db.Integer, primary_key=True)
-    shop_id = db.Column(db.Integer)
+    shop_id = db.Column(db.Integer, ForeignKey('shops.id'))
     name  = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Task> %r' %self.id
 
     def getData(self) -> dict:
-        return {'id': self.id, 'shop_id': self.shop_id, 'name': self.name}
+        return {
+            'id': self.id,
+            'shop_id': self.shop_id,
+            'name': self.name
+        }
