@@ -63,6 +63,7 @@ def required_params(required):
 
 
 def init_app(app: Flask):
-    from . import auth, user
+    from . import auth, user, order
     app.register_blueprint(auth.app)
     app.register_blueprint(user.app)
+    app.register_blueprint(order.app)

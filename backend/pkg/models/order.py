@@ -5,7 +5,7 @@ class Order(db.Model):
     """
     order models
     """
-    __tablename__ = 'order'
+    __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     customer_id  = db.Column(db.Integer)
     shop_id = db.Column(db.Integer)
