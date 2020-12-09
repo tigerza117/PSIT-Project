@@ -19,6 +19,7 @@
 - [ ] Recovery
 - [ ] Admin
 - [ ] Merchant
+- [ ] Shop
 - [ ] Ordering
 - [ ] Landing
 - [ ] Home
