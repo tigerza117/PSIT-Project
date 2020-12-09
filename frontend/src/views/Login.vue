@@ -1,14 +1,5 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-        <link rel="stylesheet" href="build/index.css">
-    </head>
-    <style>
-    </style>
-    <body class="bg-blue-50">
-        <div class="w-full max-w-md m-auto bg-white rounded-xl p-10 mt-24">
+<template>
+  <div class="w-full max-w-md m-auto bg-white rounded-xl p-10 mt-24">
             <p class="mb-2 text-2xl text-gray-600">Sing In</p>
             <div class="mb-3">
               <input class="appearance-none border border-blue-100 rounded-lg w-full py-2 px-3 text-grey-darker mt-5" id="Email" type="text" placeholder="Email">
@@ -23,10 +14,9 @@
             </div>
             <div class="mb-4">
                 <p class="text-sm text-center text-gray-600">or sign in with</p>
-            </div class="mb-4">
+            </div>
             <button class="w-full bg-gray-50 hover:bg-blue-dark text-gray-600 text-xs font-bold py-2 rounded-lg" type="button">
                 GOOGLE
               </button>
         </div>
-    </body>
-</html>
+</template>
