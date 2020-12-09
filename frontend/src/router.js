@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
+import Logout from './views/Logout.vue'
 import Register from './views/Register.vue'
-import Shop from './views/Shop.vue'
+import Shops from './views/Shops.vue'
 import Merchant from './views/Merchant.vue'
 import Order from './views/Order.vue'
 import Admin from './views/Admin.vue'
@@ -15,31 +16,61 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      name: 'home'
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      name: 'login',
+      meta: {
+        guest: true
+      }
+    },
+    {
+      path: '/logout',
+      component: Logout,
+      name: 'logout',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/register',
-      component: Register
+      component: Register,
+      name: 'register',
+      meta: {
+        guest: true
+      }
     },
     {
-      path: '/shop',
-      component: Shop
+      path: '/shops',
+      component: Shops,
+      name: 'shops',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/merchant',
-      component: Merchant
+      component: Merchant,
+      name: 'merchant',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/order',
-      component: Order
+      component: Order,
+      name: 'order',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin',
       component: Admin,
+      name: 'admin',
       meta: {
         requiresAuth: true
       }
