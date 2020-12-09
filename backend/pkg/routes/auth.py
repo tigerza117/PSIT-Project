@@ -5,7 +5,7 @@ from . import app, required_params
 import hashlib
 import jwt
 
-@app.route('/login')
+@app.route('/login', methods=["POST"])
 @required_params({"email": str, "password": str})
 def login():
     body = request.get_json()
@@ -21,7 +21,7 @@ def login():
             return {'message': 'email or password wrong'}, 400
     return body
 
-@app.route('/register')
+@app.route('/register', methods=["PUT"])
 @required_params({"email": str, "password": str, "fname": str, "lname": str})
 def register():
     body = request.get_json()
