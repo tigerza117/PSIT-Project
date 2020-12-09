@@ -2,8 +2,6 @@ from flask.globals import request, session
 from ..models.user import User
 from ..models import db
 from . import app, private
-import hashlib
-import jwt
 
 @app.route('/profile', methods=['GET'])
 @private()

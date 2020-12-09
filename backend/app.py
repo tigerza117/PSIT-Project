@@ -5,7 +5,7 @@ from pkg import routes
 app = Flask(__name__)
 
 with app.app_context():
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://trda:kkgFOpODYIXc1q2S@103.91.205.130/trda'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://salmon:_-.*<:e5w`DqqLJW@103.91.205.130/salmon'
     app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
     CORS(app)
     routes.init_app(app)
