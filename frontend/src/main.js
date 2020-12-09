@@ -8,6 +8,14 @@ import Axios from 'axios'
 
 Vue.use(Vuex)
 
+Axios.interceptors.request.use(request => {
+  let token = localStorage.getItem('jwt')
+  if (token) {
+    request.headers.Authorization = `Bearer ${token}`
+  }
+  return request
+})
+
 Axios.defaults.baseURL = 'http://localhost:5000/'
 
 Vue.prototype.$http = Axios
