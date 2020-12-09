@@ -28,7 +28,8 @@ def register():
     user = User()
     user.email = body['email']
     user.password = hashlib.md5(body['password'].encode('utf-8')).hexdigest()
-    user.name = body['fname']
+    user.fname = body['fname']
+    user.lname = body['lname']
     db.session.add(user)
     db.session.commit()
     return {'success': True}, 201
