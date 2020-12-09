@@ -26,5 +26,9 @@ class Menu(db.Model):
             'price': self.price,
             'extra_price': self.extra_price,
             'category_id': self.category_id,
-            'category': self.category.getData(),
+            'category': self.category.get('name')['name'],
         }
+
+    def get(self, *keys: tuple):
+        a = self.getData()
+        return dict((key,value) for key, value in a.items() if key in keys)

@@ -24,3 +24,7 @@ class User(db.Model):
             'lname': self.lname,
             'email': self.email
         }
+
+    def get(self, *keys: tuple):
+        a = self.getData()
+        return dict((key,value) for key, value in a.items() if key in keys)

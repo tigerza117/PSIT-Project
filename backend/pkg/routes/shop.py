@@ -20,5 +20,5 @@ def put_shops():
 @app.route('/shops/<id>', methods=['GET'])
 def get_inshops(id):
     shop = Shop.query.filter_by(id=id).first()
-    return shop.getData()
+    return shop.get('id', 'name')
 

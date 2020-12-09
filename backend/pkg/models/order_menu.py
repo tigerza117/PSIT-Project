@@ -16,9 +16,13 @@ class OrderMenu(db.Model):
         return '<Task> %r' %self.id
 
     def getData(self) -> dict:
-        return {
+        data = {
             'id': self.id,
-            'order_id': self.order_id,
-            'menu_id': self.menu_id,
-            'menu': self.menu.getData()
+            'extra': self.extra
         }
+        data.update(self.menu.get('price', 'name', 'extra_price', 'category'))
+        return data
+
+    def get(self, *keys: tuple):
+        a = self.getData()
+        return dict((key,value) for key, value in a.items() if key in keys)

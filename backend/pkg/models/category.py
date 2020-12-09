@@ -19,3 +19,7 @@ class Category(db.Model):
             'shop_id': self.shop_id,
             'name': self.name
         }
+
+    def get(self, *keys: tuple):
+        a = self.getData()
+        return dict((key,value) for key, value in a.items() if key in keys)

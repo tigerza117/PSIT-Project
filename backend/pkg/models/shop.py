@@ -7,6 +7,7 @@ class Shop(db.Model):
     """
     shop models
     """
+
     __tablename__ = 'shops'
     id = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(120))
@@ -24,6 +25,10 @@ class Shop(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'desciption': self.desciption,
+            'desciption': self.description,
             'owner_id': self.owner_id
         }
+
+    def get(self, *keys: tuple):
+        a = self.getData()
+        return dict((key,value) for key, value in a.items() if key in keys)
