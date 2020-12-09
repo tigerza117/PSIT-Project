@@ -1,12 +1,8 @@
-<template>
-  <div></div>
-</template>
-
 <script>
 export default {
-  mounted() {
+  beforeMount() {
     localStorage.removeItem('jwt')
-    window.location.reload()
+    window.location.href = '/login'
   }
 }
 </script>

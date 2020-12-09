@@ -59,7 +59,10 @@ export default {
           if (data.access_token) {
             console.log(data.access_token)
             localStorage.setItem('jwt', data.access_token)
-            this.$router.push('/shops')
+            let next = this.$route.query.nextUrl
+              ? this.$route.query.nextUrl
+              : '/'
+            this.$router.push(next)
           }
         })
       }

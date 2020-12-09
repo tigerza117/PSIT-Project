@@ -84,7 +84,7 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem('jwt') == null) {
       next({
         path: '/login',
-        params: { nextUrl: to.fullPath }
+        query: { nextUrl: to.fullPath }
       })
     } else {
       let user = JSON.parse(localStorage.getItem('user'))
@@ -92,7 +92,7 @@ router.beforeEach((to, from, next) => {
         if (user.is_admin == 1) {
           next()
         } else {
-          next({ name: 'userboard' })
+          next({ name: 'home' })
         }
       } else {
         next()
@@ -102,7 +102,7 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem('jwt') == null) {
       next()
     } else {
-      next({ name: 'userboard' })
+      next({ name: 'home' })
     }
   } else {
     next()
