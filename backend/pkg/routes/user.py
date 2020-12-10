@@ -6,7 +6,7 @@ from . import app, private
 @app.route('/profile', methods=['GET'])
 @private()
 def profile(data):
-    user = getUser(data['user'])
+    user = getUser(data['id'])
     return user.getData()
 
 def getUser(id: int) -> User:
