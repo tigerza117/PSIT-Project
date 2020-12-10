@@ -7866,6 +7866,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@^10.12.4:
+  version "10.12.4"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.12.4.tgz#21cf8d36e65747f7c7f7c130aff6b9142f47b3d4"
+  integrity sha512-RkIaYxaUIbgJ0DWqK6WIcXG09Wet7NeZetGIjb8CgWSequN3PCP3TAumfImxvnn2zsZkAM9dsmcnGGKFb3lUOg==
+
 table@^5.2.3:
   version "5.4.6"
   resolved "https://registry.npm.taobao.org/table/download/table-5.4.6.tgz#1292d19500ce3f86053b05f0e8e7e4a3bb21079e"
@@ -8415,6 +8420,11 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-password@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/vue-password/-/vue-password-3.0.0.tgz#34ce16dcf4347009e378fdf9c00731e1bb3e2ff7"
+  integrity sha512-P7ya7s9mAA35U81mvpqu0569PUe4ryftkuJLO1xBFwsDoL07AHF4Eno2xQwqE3uA2npogm7/HKu6G9tXKTazmQ==
 
 vue-router@^3.4.9:
   version "3.4.9"
