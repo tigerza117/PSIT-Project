@@ -2,6 +2,7 @@ from flask.globals import request
 from ..models.user import User
 from ..models import db
 from . import app, required_params
+import datetime
 import hashlib
 import jwt
 
@@ -14,7 +15,7 @@ def login():
     user = User.query.filter_by(email=email).first()
     if user:
         if user.password == hashlib.md5(password.encode('utf-8')).hexdigest():
-            encoded_jwt = jwt.encode({'id': user.id}, 'secret', algorithm='HS256')
+            encoded_jwt = jwt.encode({'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, 'secret', algorithm='HS256')
             print(encoded_jwt)
             return {'access_token': encoded_jwt.decode('utf-8')}, 200
         else:
