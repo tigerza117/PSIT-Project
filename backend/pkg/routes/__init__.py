@@ -15,7 +15,7 @@ def private():
         def wrapper(*args, **kwargs):
             auth_header = request.headers.get('Authorization', '')
             if not auth_header:
-                return {'message': 'Access denied'}, 400
+                return {'message': 'Access denide'}, 400
             token = auth_header.split()[1]
             user = None
             try:
