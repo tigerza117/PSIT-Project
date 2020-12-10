@@ -4,6 +4,7 @@ from flask import jsonify
 from ..models.shop import Shop
 from ..models.menu import Menu
 from ..models.order import Order
+from .. models.order_menu import OrderMenu
 from ..models import db
 from . import app, required_params, private
 import hashlib
@@ -35,3 +36,11 @@ def get_inshops(data, id):
     # print(result)
     return result
 
+@app.route('/shops/<id>', methods=['PUT'])
+@private()
+def put_inshops(data, id):
+    order_menu = OrderMenu.query.filter_by(shop_id=id).first()
+    result = order_menu.get('note')
+    result.update(({'menus': [i.getData for i in order_menu]}))
+    print(result)
+    return result
