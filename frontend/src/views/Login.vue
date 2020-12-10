@@ -52,22 +52,21 @@ export default {
       auth: {
         email: '',
         password: ''
-      },
-      login: () => {
-        axios.post('login', this.auth).then(res => {
-          let data = res.data
-          if (data.access_token) {
-            console.log(data.access_token)
-            localStorage.setItem('jwt', data.access_token)
-            let next = this.$route.query.nextUrl
-              ? this.$route.query.nextUrl
-              : '/'
-            this.$router.push(next)
-          }
-        })
       }
     }
   },
-  methods: {}
+  methods: {
+    login() {
+      axios.post('login', this.auth).then(res => {
+        let data = res.data
+        if (data.access_token) {
+          console.log(data.access_token)
+          localStorage.setItem('jwt', data.access_token)
+          let next = this.$route.query.nextUrl ? this.$route.query.nextUrl : '/'
+          this.$router.push(next)
+        }
+      })
+    }
+  }
 }
 </script>
