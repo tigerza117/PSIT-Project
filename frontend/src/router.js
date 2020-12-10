@@ -5,7 +5,7 @@ import Login from './views/Login.vue'
 import Logout from './views/Logout.vue'
 import Register from './views/Register.vue'
 import Shops from './views/Shops.vue'
-import Merchant from './views/Merchant.vue'
+import Shop from './views/Shop.vue'
 import Order from './views/Order.vue'
 import Admin from './views/Admin.vue'
 
@@ -17,7 +17,10 @@ const router = new Router({
     {
       path: '/',
       component: Home,
-      name: 'home'
+      name: 'home',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -52,9 +55,9 @@ const router = new Router({
       }
     },
     {
-      path: '/merchant',
-      component: Merchant,
-      name: 'merchant',
+      path: '/shop',
+      component: Shop,
+      name: 'shop',
       meta: {
         requiresAuth: true
       }
