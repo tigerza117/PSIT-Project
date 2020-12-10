@@ -1,62 +1,33 @@
 <template>
-  <div class="max-w-md mx-auto mt-24 mb-4 shadow-2xl rounded-2xl">
-    <!--Body-->
+  <div class="max-w-md mx-auto my-24 shadow-2xl rounded-2xl">
     <div class="p-5 md:bg-white-100 rounded-xl">
-      <p class="text-left mb-0.5 mt-5 ml-1 font-bold">Sign Up</p>
-      <!--        <img
-          class="w-16 h-16 mx-auto"
-          src="logo_green.png"
-          alt=""
-          width="384"
-          height="512"
-        />-->
+      <p class="topic">Sign Up</p>
       <form v-on:submit.prevent="register" class="pt-6 space-y-4 text-center">
-        <div class="relative flex flex-wrap items-stretch w-full mb-3">
-          <span
-            class="absolute z-10 items-center justify-center w-8 h-full py-3 pl-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded"
-          >
-            <i class="fas fa-lock"></i>
-          </span>
+        <div class="flex-box">
           <input
             v-model="auth.fname"
             type="text"
             placeholder="Firstname"
-            class="relative w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400 bg-white border outline-none input rounded-xl focus:outline-none focus:shadow-outline"
+            class="input"
           />
         </div>
-        <div class="relative flex flex-wrap items-stretch w-full mb-3">
-          <span
-            class="absolute z-10 items-center justify-center w-8 h-full py-3 pl-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded"
-          >
-            <i class="fas fa-lock"></i>
-          </span>
+        <div class="flex-box">
           <input
             v-model="auth.lname"
             type="text"
             placeholder="Lastname"
-            class="relative w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400 bg-white border outline-none rounded-xl focus:outline-none focus:shadow-outline"
+            class="input"
           />
         </div>
-        <div class="relative flex flex-wrap items-stretch w-full mb-3">
-          <span
-            class="absolute z-10 items-center justify-center w-8 h-full py-3 pl-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded-xl"
-          >
-            <i class="fas fa-lock"></i>
-          </span>
+        <div class="flex-box">
           <input
             v-model="auth.email"
             type="text"
             placeholder="Email"
-            class="relative w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400 bg-white border outline-none rounded-xl focus:outline-none focus:shadow-outline"
+            class="input"
           />
         </div>
-        <div class="relative flex flex-wrap items-stretch w-full mb-3">
-          <span
-            class="absolute z-10 items-center justify-center w-8 h-full py-3 pl-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded-xl"
-          >
-            <i class="fas fa-lock"></i>
-          </span>
-
+        <div class="flex-box">
           <VuePassword
             v-model="password"
             id="password"
@@ -69,42 +40,37 @@
             >
               <input
                 type="password"
-                placeholder="Text input"
+                placeholder="Password"
                 :value="props.value"
                 @input="props.updatePassword"
-                class="relative w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400 bg-white border outline-none rounded-xl focus:outline-none focus:shadow-outline"
+                class="input"
               />
             </template>
           </VuePassword>
         </div>
-        <div class="relative flex flex-wrap items-stretch w-full mb-3">
-          <span
-            class="absolute z-10 items-center justify-center w-8 h-full py-3 pl-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded-xl"
-          >
-            <i class="fas fa-lock"></i>
-          </span>
+        <div class="flex-box">
           <input
             type="text"
             placeholder="Confirm password"
-            class="relative w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400 bg-white border outline-none rounded-xl focus:outline-none focus:shadow-outline"
+            class="input"
           />
         </div>
-
         <button
-          class="w-full px-24 py-2 mb-0 font-semibold text-white bg-blue-500 shadow-md rounded-xl hover:bg-blue-700"
+          class="btn"
         >
           Sign in
         </button>
-        <p class="mt-1 text-lg font-light">or sign in with</p>
+        <p class="text-sm text-center text-gray-600">
+          or sign in with
+        </p>
         <button
-          class="w-full px-24 py-2 font-semibold text-white bg-gray-300 shadow-md rounded-xl hover:bg-gray-500"
+          class="btn-gray"
         >
           GOOGLE
         </button>
-        <p class="text-lg font-light">
+        <p class="text-sm text-center text-gray-600">
           Already member? <a href="#" class="hover:text-blue">sign in</a>
         </p>
-        <button class="btn btn-blue">Hello</button>
       </form>
     </div>
   </div>
@@ -157,10 +123,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.btn {
-  @apply inline-block font-bold rounded-lg shadow-sm px-6 py-2;
-}
-.btn-blue {
-  @apply bg-red-500 text-white;
-}
 </style>
