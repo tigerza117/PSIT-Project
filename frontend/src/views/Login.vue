@@ -1,6 +1,6 @@
 <template>
   <div class="w-full max-w-md p-10 m-auto mt-24 bg-white rounded-xl">
-    <p class="mb-2 text-2xl text-gray-600">Sing In</p>
+    <p class="topic">Sing In</p>
     <form v-on:submit.prevent="login">
       <div class="mb-3">
         <input
@@ -25,14 +25,14 @@
         />
       </div>
       <div class="flex items-center justify-between mb-4">
-        <button class="btn btn-blue" type="submit">
+        <button class="btn" type="submit">
           Sign In
         </button>
       </div>
       <div class="mb-4">
         <p class="text-sm text-center text-gray-600">or sign in with</p>
       </div>
-      <button class="btn btn-blue">
+      <button class="btn-gray">
         GOOGLE
       </button>
     </form>
