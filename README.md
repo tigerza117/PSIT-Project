@@ -5,7 +5,7 @@
 ## Features
 
 - [ ] OAuth(Gmail Login/Register)
-- [ ] Auth
+- [x] Auth
 - [ ] Ordering
 - [ ] Notification
 - [ ] Admin control
@@ -13,8 +13,8 @@
 
 ## Pages
 
-- [ ] Login
-- [ ] Register
+- [x] Login
+- [x] Register
 - [ ] Verify
 - [ ] Recovery
 - [ ] Admin
