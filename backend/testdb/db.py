@@ -15,10 +15,8 @@ mycursor = mydb.cursor()
 # for x in myresult:
 #   print(x)
 
-sql = "INSERT INTO `uesrs` (`fname`, `lname`, `password`, `email`) VALUES (%s, %s, %s, %s)"
-val = (input(), input(), input(), input())
-mycursor.execute(sql, val)
-
-mydb.commit()
+mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW())")
+myresult = mycursor.fetchall()
+print(len(myresult))
 
 # don't use %d

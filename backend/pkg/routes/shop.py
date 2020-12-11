@@ -12,13 +12,6 @@ from . import app, required_params, private
 import hashlib
 import jwt
 
-mydb = mysql.connector.connect(
-  host="103.91.205.130",
-  user="salmon",
-  password="_-.*<:e5w`DqqLJW",
-  database="salmon"
-)
-
 @app.route('/shops', methods=['GET'])
 @private()
 def get_shops(data):
@@ -46,11 +39,18 @@ def get_inshops(data, id):
     return result
 
 @app.route('/shops/<id>', methods=['PUT'])
-@required_params({"note": str, "queue": str, "status": str})
+@required_params({"note": str})
 @private()
 def put_inshops(data, id):
-    userID = 5
+    userID = data["id"]
     print(data)
+    mydb = mysql.connector.connect(
+  host="103.91.205.130",
+  user="salmon",
+  password="_-.*<:e5w`DqqLJW",
+  database="salmon"
+    )
+    mycursor = mydb.cursor()
     body = request.get_json()
     order = Order()
     body.update({"customer_id": userID})
@@ -58,8 +58,15 @@ def put_inshops(data, id):
     order.customer_id = body["customer_id"]
     order.shop_id = body["shop_id"]
     order.note = body["note"]
+
+    """queue path"""
+    mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW())")
+    myresult = mycursor.fetchall()
+    print(len(myresult))
+    body.update({"queue": 'A'+str(len(myresult))})
     order.queue = body["queue"]
-    order.status = body["status"]
+    """queue path"""
+    order.status = 'ordering'
     db.session.add(order)
     db.session.commit()
     return {'success': True}, 201
@@ -67,10 +74,8 @@ def put_inshops(data, id):
 
 """
 {
-    "customer_id": 1,
-    "note": "ไม่เอาอะไรเลย",
-    "queue": "A4",
-    "status": "ordering"
+    "email": "helloworld@gmail.com",
+    "password": "helloworld"
 }
 
 """
