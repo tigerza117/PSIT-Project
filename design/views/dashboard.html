@@ -19,7 +19,7 @@
     <!--Replace with your tailwind.css once created-->
   </head>
   <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-    <nav id="header" class="bg-white fixed w-full z-10 top-0 shadow">
+    <nav id="header" class="bg-white fixed w-full z-10 top-0 p-2 pb-3 shadow">
       <div
         class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0"
       >
@@ -109,104 +109,18 @@
             </div>
 
             <div class="block lg:hidden pr-4">
-              <button
-                id="nav-toggle"
-                class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-teal-500 appearance-none focus:outline-none"
-              >
-                <svg
-                  class="fill-current h-3 w-3"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Menu</title>
-                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
-
-        <div
-          class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20"
-          id="nav-content"
-        >
-          <ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-gray-900 border-b-2 border-orange-600 hover:border-orange-600"
-              >
-                <i class="fas fa-home fa-fw mr-3 text-green-400"></i
-                ><span class="pb-1 md:pb-0 text-sm">หน้าหลัก</span>
-              </a>
-            </li>
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500"
-              >
-                <i class="fas fa-tasks fa-fw mr-3"></i
-                ><span class="pb-1 md:pb-0 text-sm">ระบบ</span>
-              </a>
-            </li>
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-purple-500"
-              >
-                <i class="fa fa-envelope fa-fw mr-3"></i
-                ><span class="pb-1 md:pb-0 text-sm">ข้อความ</span>
-              </a>
-            </li>
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-green-500"
-              >
-                <i class="fas fa-chart-area fa-fw mr-3"></i
-                ><span class="pb-1 md:pb-0 text-sm">วิเคราะห์</span>
-              </a>
-            </li>
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-red-500"
-              >
-                <i class="fa fa-wallet fa-fw mr-3"></i
-                ><span class="pb-1 md:pb-0 text-sm">การชำระเงิน</span>
-              </a>
-            </li>
-          </ul>
-
-          <div class="relative pull-right pl-4 pr-4 md:pr-0">
-            <input
-              type="search"
-              placeholder="Search"
-              class="w-full bg-gray-100 text-sm text-gray-800 transition focus:outline-none focus:border-green-400 rounded-3xl border border-gray-300 py-1 px-2 pl-10 appearance-none leading-normal"
-            />
-            <div
-              class="absolute search-icon"
-              style="top: 0.45rem; left: 1.75rem"
-            >
-              <svg
-                class="fill-current pointer-events-none text-gray-800 w-4 h-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
+<!---->
+        
       </div>
     </nav>
 
     <!--Container-->
-    <div class="container w-full mx-auto pt-20 sh">
+    <div class="container w-full mx-auto pt-20 shadow">
       <div
-        class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal"
+        class="w-full px-4 md:px-0 md:mt-10 mb-16 text-gray-800 leading-normal"
       >
         <!--Console Content-->
 
@@ -331,10 +245,128 @@
             <!--Graph Card-->
             <div class="bg-white border rounded-2xl shadow-xl">
               <div class="border-b p-3">
-                <h5 class="font-bold uppercase text-gray-600">กล่อง</h5>
+                <h5 class="font-bold uppercase text-gray-600">ร้านค้า</h5>
               </div>
               <div class="p-5">
+                <div class="items-center flex">
+                <button
+        type="button"
+        class="border border-green-500 bg-green-500 text-white rounded-md px-2 py-1 mb-5 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
+      >
+        เพิ่มร้านค้า
+      </button>
+      <form method="GET">
+    <div class="relative text-gray-600 focus-within:text-gray-400 px-2 py-1">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </button>
+      </span>
+      <input type="search" name="q" class="py-2 text-sm text-white bg-gray-100 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="ค้นหา" autocomplete="off">
+    </div>
+  </form>
+  </div>
+                <table class="border-collapse w-full">
+    <thead>
+        <tr>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">ร้านค้า</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">เจ้าของร้าน</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">สถานะ</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">การจัดการ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">ร้านค้า</span>
+                ร้านป้านกเล็ก
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">เจ้าของร้าน</span>
+                เสือ
+            </td>
+          	<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">สถานะ</span>
+                <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">deleted</span>
+          	</td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">การจัดการ</span>
+                <a href="#" class="border border-yellow-400 bg-yellow-300 text-white rounded-xl px-2 py-0 m-2 transition duration-500 ease select-none hover:bg-yellow-600 focus:outline-none focus:shadow-outline">เลือก</a>
+              
+            </td>
+        </tr>
+        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">ร้านค้า</span>
+                ร้านน้องพลอย
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">เจ้าของร้าน</span>
+                โอห์ม
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">สถานะ</span>
+                <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">active</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">การจัดการ</span>
+                <a href="#" class="border border-yellow-400 bg-yellow-300 text-white rounded-xl px-2 py-0 m-2 transition duration-500 ease select-none hover:bg-yellow-600 focus:outline-none focus:shadow-outline">เลือก</a>
+              
+            </td>
+        </tr>
+        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">ร้านค้า</span>
+				ร้าน me smile
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">เจ้าของร้าน</span>
+                โกเทน
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">สถานะ</span>
+                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">inactive</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">การจัดการ</span>
+                <a href="#" class="border border-yellow-400 bg-yellow-300 text-white rounded-xl px-2 py-0 m-2 transition duration-500 ease select-none hover:bg-yellow-600 focus:outline-none focus:shadow-outline">เลือก</a>
+              
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+            <nav class="relative z-0 inline-flex shadow-sm p-2">
+                <div	>
+                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Previous" v-on:click.prevent="changePage(pagination.current_page - 1)">
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-700 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
+                        1
+                    </a>
+                  <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
+                        2
+                    </a>
+                   <a href="#" class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-blue-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary">
+                        3
+                    </a>
+                </div>
+                <div v-if="pagination.current_page < pagination.last_page">
+                    <a href="#" class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Next">
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    
+                </div>
                 
+            </nav>
+            
+        </div>
               </div>
             </div>
             <!--/กล่อง Card-->
@@ -344,10 +376,15 @@
             <!--กล่อง Card-->
             <div class="bg-white border rounded shadow">
               <div class="border-b p-3">
-                <h5 class="font-bold uppercase text-gray-600">กล่อง</h5>
+                <h5 class="font-bold uppercase text-gray-600">จัดการร้านค้า</h5>
               </div>
-              <div class="p-5">
-                
+              <div class="p-5 align-center">
+                <div class="p-1 align-center">
+    <div class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-2 shadow text-teal text-sm">
+      <span class="inline-flex bg-pink-600 text-white rounded-full h-6 px-3 justify-center items-center">คำเตือน !</span>
+      <span class="inline-flex px-2">เมื่อแก้ไขเสร็จอย่าลืมกดบันทึก                    </span>
+    </div>
+  </div>
               </div>
             </div>
             <!--/กล่อง Card-->
@@ -357,11 +394,37 @@
             <!--กล่อง Card-->
             <div class="bg-white border rounded shadow">
               <div class="border-b p-3">
-                <h5 class="font-bold uppercase text-gray-600">กล่อง</h5>
+                <h5 class="font-bold uppercase text-gray-600">เปลี่ยนรหัสผ่าน</h5>
               </div>
               <div class="p-5">
-                
+                <form>
+                <div class="py-1">
+                                <span class="px-1 text-sm text-gray-600">รหัสผ่านเดิม</span>
+                                <input placeholder="" type="password" x-model="password"
+                                       class="text-md block px-3 py-2 rounded-lg w-full
+                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                            </div>
+                            <div class="py-1">
+                                <span class="px-1 text-sm text-gray-600">รหัสผ่านใหม่</span>
+                                <input placeholder="" type="password" x-model="password_new"
+                                       class="text-md block px-3 py-2 rounded-lg w-full
+                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                            </div>
+                            <div class="py-1">
+                                <span class="px-1 text-sm text-gray-600">ยืนยันรหัสผ่านใหม่</span>
+                                <input placeholder="" type="password" x-model="password_new"
+                                       class="text-md block px-3 py-2 rounded-lg w-full
+                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                            </div>
+                            <button class="mt-3 text-lg font-semibold
+            bg-gray-800 w-full text-white rounded-lg
+            px-6 py-3 block shadow-xl hover:text-white hover:bg-black">
+                                ยืนยัน
+                            </button>
+                            </form>
               </div>
+              
+              
             </div>
             <!--/กล่อง Card-->
           </div>
