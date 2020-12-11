@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div
-      class="fixed top-0 z-20 flex flex-wrap items-center w-full p-4 px-6 m-auto bg-green-500 animated place-content-between"
-    >
+    <div class="nav-page">
       <!--Logo-->
       <div class="text-4xl font-bold text-white">LME</div>
       <!--menu-->
@@ -10,7 +8,7 @@
         <ul class="flex space-x-8">
           <li>
             <button
-              class="p-2 transition duration-500 bg-white rounded hover:bg-red-500"
+              class="btn-nav"
             >
               Sign-In
             </button>
@@ -22,7 +20,7 @@
       <!--Body-->
       <div class="grid gap-4 px-4 mt-4 md:grid-cols-2 xl:grid-cols-3">
         <div
-          class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+          class="menu-box"
         >
           <img
             class="object-cover w-full h-64 rounded-lg"
@@ -37,7 +35,7 @@
           </div>
         </div>
         <div
-          class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+          class="menu-box"
         >
           <img
             class="object-cover w-full h-64 rounded-lg"
@@ -52,7 +50,7 @@
           </div>
         </div>
         <div
-          class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+          class="menu-box"
         >
           <img
             class="object-cover w-full h-64 rounded-lg"
@@ -67,7 +65,7 @@
           </div>
         </div>
         <div
-          class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+          class="menu-box"
         >
           <img
             class="object-cover w-full h-64 rounded-lg"
@@ -85,3 +83,6 @@
     </div>
   </div>
 </template>
+<style scoped lang="postcss">
+
+</style>

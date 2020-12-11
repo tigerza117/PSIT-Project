@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md mx-auto my-24 shadow-2xl rounded-2xl">
+  <div class="max-w-md mx-auto my-20 shadow-xl rounded-2xl">
     <div class="p-5 md:bg-white-100 rounded-xl">
       <p class="topic">Sign Up</p>
       <form v-on:submit.prevent="register" class="pt-6 space-y-4 text-center">
@@ -69,7 +69,7 @@
           GOOGLE
         </button>
         <p class="text-sm text-center text-gray-600">
-          Already member? <a href="#" class="hover:text-blue">sign in</a>
+          Already member? <a href="#" class="underline text-blue-400 hover:text-blue-800">Sign in</a>
         </p>
       </form>
     </div>
