@@ -15,7 +15,7 @@ mycursor = mydb.cursor()
 # for x in myresult:
 #   print(x)
 
-sql = "INSERT INTO `orders` (`customer_id`, `shop_id`, `note`, `queue`) VALUES (%s, %s, %s, %s)"
+sql = "INSERT INTO `uesrs` (`fname`, `lname`, `password`, `email`) VALUES (%s, %s, %s, %s)"
 val = (input(), input(), input(), input())
 mycursor.execute(sql, val)
 
