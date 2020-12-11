@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="fixed top-0 z-20 flex flex-wrap items-center w-full p-4 px-6 m-auto bg-green-500 animated place-content-between"
+      class="nav-page"
     >
       <!--Logo-->
       <div class="text-4xl font-bold text-white">LME</div>
@@ -10,9 +10,9 @@
         <ul class="flex space-x-8">
           <li>
             <button
-              class="p-2 transition duration-500 bg-white rounded hover:bg-red-500"
+              class="btn-nav"
             >
-              Sign-In
+              Logout
             </button>
           </li>
         </ul>
@@ -41,15 +41,15 @@
         </div>
       </div>
       <div
-        class="p-4 mt-6 text-xl text-center text-white bg-green-500 rounded-lg"
+        class="btn-order"
       >
         สั่งอาหาร
       </div>
       <div class="my-6 text-2xl font-bold">เมนูอาหาร</div>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <div class="relative">
+        <div class="menu-box">
           <img
-            class="object-cover w-full h-64 rounded-lg"
+            class="img-menu"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
           />
           <!--Card-->
@@ -61,57 +61,57 @@
             </div>
           </div>
         </div>
-        <div class="relative">
+        <div class="menu-box">
           <img
-            class="object-cover w-full h-64 rounded-lg"
+            class="img-menu"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
           />
           <!--Card-->
           <div class="absolute top-0">
             <div>
-              <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
+              <div class="name-menu">
                 Pasta in Tomato Sauce
               </div>
             </div>
           </div>
         </div>
-        <div class="relative">
+        <div class="menu-box">
           <img
-            class="object-cover w-full h-64 rounded-lg"
+            class="img-menu"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
           />
           <!--Card-->
           <div class="absolute top-0">
             <div>
-              <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
+              <div class="name-menu">
                 Pasta in Tomato Sauce
               </div>
             </div>
           </div>
         </div>
-        <div class="relative">
+        <div class="menu-box">
           <img
-            class="object-cover w-full h-64 rounded-lg"
+            class="img-menu"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
           />
           <!--Card-->
           <div class="absolute top-0">
             <div>
-              <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
+              <div class="name-menu">
                 Pasta in Tomato Sauce
               </div>
             </div>
           </div>
         </div>
-        <div class="relative">
+        <div class="menu-box">
           <img
-            class="object-cover w-full h-64 rounded-lg"
+            class="img-menu"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
           />
           <!--Card-->
           <div class="absolute top-0">
             <div>
-              <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
+              <div class="name-menu">
                 Pasta in Tomato Sauce
               </div>
             </div>
@@ -121,3 +121,11 @@
     </div>
   </div>
 </template>
+<style scoped lang="postcss">
+.btn-order {
+  @apply p-4 mt-6 text-xl text-center text-white bg-green-500 transition duration-500 rounded-lg hover:bg-green-600;
+}
+.name-menu {
+  @apply p-2 mx-2 mt-2 bg-white rounded-lg
+}
+</style>

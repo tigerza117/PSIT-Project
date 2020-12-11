@@ -25,9 +25,18 @@ export default {
   @apply flex items-center ;
 }
 .topic {
-  @apply mb-2 text-2xl text-gray-600
+  @apply mb-2 text-2xl text-gray-500;
 }
-.small-text {
-  @appl text-sm text-center text-gray-600;
+.menu-box {
+  @apply relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+}
+.nav-page {
+  @apply fixed top-0 z-20 flex flex-wrap items-center w-full p-4 px-6 m-auto bg-green-500 place-content-between;
+}
+.btn-nav {
+  @apply p-2 transition duration-500 bg-white rounded hover:bg-red-500;
+}
+.img-menu {
+  @apply object-cover w-full h-64 rounded-lg;
 }
 </style>
