@@ -45,10 +45,10 @@ def put_inshops(data, id):
     userID = data["id"]
     print(data)
     mydb = mysql.connector.connect(
-  host="103.91.205.130",
-  user="salmon",
-  password="_-.*<:e5w`DqqLJW",
-  database="salmon"
+    host="103.91.205.130",
+    user="salmon",
+    password="_-.*<:e5w`DqqLJW",
+    database="salmon"
     )
     mycursor = mydb.cursor()
     body = request.get_json()
@@ -66,10 +66,28 @@ def put_inshops(data, id):
     body.update({"queue": 'A'+str(len(myresult))})
     order.queue = body["queue"]
     """queue path"""
+
     order.status = 'ordering'
     db.session.add(order)
     db.session.commit()
     return {'success': True}, 201
+
+@app.route('/shops/<id>/order', methods=['GET'])
+@private()
+def user_orderonshop(data, id):
+    shop = Shop.query.filter_by(id=id).first()
+    userID = data["id"]
+    order = Order.query.filter_by(shop_id=id, customer_id=userID).first()
+    mydb = mysql.connector.connect(
+    host="103.91.205.130",
+    user="salmon",
+    password="_-.*<:e5w`DqqLJW",
+    database="salmon"
+    )
+    if order != None:
+        return order.get('queue')
+    else:
+        return 'your order not found'
 
 
 """
