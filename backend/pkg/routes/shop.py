@@ -58,15 +58,16 @@ def put_inshops(data, id):
     order.customer_id = body["customer_id"]
     order.shop_id = body["shop_id"]
     order.note = body["note"]
-
-    """queue path"""
-    mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW())")
+    mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW()) and customer_id = %s" %userID)
     myresult = mycursor.fetchall()
     print(len(myresult))
-    body.update({"queue": 'A'+str(len(myresult))})
-    order.queue = body["queue"]
-    """queue path"""
-
+    if len(myresult) == 0:
+        """queue path"""
+        body.update({"queue": 'A'+str(len(myresult))})
+        order.queue = body["queue"]
+        """queue path"""
+    else:
+        return 'You have order now'
     order.status = 'ordering'
     db.session.add(order)
     db.session.commit()
@@ -75,7 +76,7 @@ def put_inshops(data, id):
 @app.route('/shops/<id>/order', methods=['GET'])
 @private()
 def user_orderonshop(data, id):
-    shop = Shop.query.filter_by(id=id).first()
+    # shop = Shop.query.filter_by(id=id).first()
     userID = data["id"]
     order = Order.query.filter_by(shop_id=id, customer_id=userID).first()
     mydb = mysql.connector.connect(
