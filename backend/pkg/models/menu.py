@@ -13,11 +13,12 @@ class Menu(db.Model):
     price = db.Column(db.Integer)
     extra_price = db.Column(db.Integer)
     category_id = db.Column(db.Integer, ForeignKey('categorys.id'))
+    img = db.Column(db.String(120))
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
 
     category = db.relationship("Category", uselist=False, backref="parent")
-    img = db.Column(db.String(120))
+
     def __repr__(self):
         return '<Task> %r' %self.id
 
