@@ -1,17 +1,13 @@
 <template>
   <div>
-    <div
-      class="nav-page"
-    >
+    <div class="nav-page">
       <!--Logo-->
       <div class="text-4xl font-bold text-white">LME</div>
       <!--menu-->
       <div>
         <ul class="flex space-x-8">
           <li>
-            <button
-              class="btn-nav"
-            >
+            <button class="btn-nav">
               Logout
             </button>
           </li>
@@ -24,15 +20,14 @@
       <div class="flex items-center border rounded-lg">
         <div class="w-full">
           <div class="flex justify-center">
-            <lottie-player
+            <lottie-animation
               class="-mr-16"
-              src="cooking.json"
-              background="transparent"
-              speed="1"
-              style="height: 300px"
-              loop
-              autoplay
-            ></lottie-player>
+              path="cooking.json"
+              :loop="true"
+              :autoPlay="true"
+              :speed="1"
+              :height="300"
+            ></lottie-animation>
           </div>
           <div class="py-10 text-center">
             <div class="text-4xl font-bold lg:text-6xl">ขณะนี้คิวที่ A07</div>
@@ -40,9 +35,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="btn-order"
-      >
+      <div class="btn-order">
         สั่งอาหาร
       </div>
       <div class="my-6 text-2xl font-bold">เมนูอาหาร</div>
@@ -121,11 +114,21 @@
     </div>
   </div>
 </template>
+
+<script>
+import LottieAnimation from 'lottie-vuejs/src/LottieAnimation.vue'
+export default {
+  components: {
+    LottieAnimation
+  }
+}
+</script>
+
 <style scoped lang="postcss">
 .btn-order {
   @apply p-4 mt-6 text-xl text-center text-white bg-green-500 transition duration-500 rounded-lg hover:bg-green-600;
 }
 .name-menu {
-  @apply p-2 mx-2 mt-2 bg-white rounded-lg
+  @apply p-2 mx-2 mt-2 bg-white rounded-lg;
 }
 </style>
