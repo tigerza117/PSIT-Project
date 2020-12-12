@@ -47,11 +47,13 @@ def get_shop_byID(data, id):
     shop = Shop.query.filter_by(id=id).first()
     if shop:
         order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status=='waiting').first()
+        order_count = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status == 'ordering').count()
         queue = {'queue': 'no queue'}
         if order:
             queue = order.get('queue')
         result = shop.get('name', 'menus')
         result.update(queue)
+        result.update({'order_count': order_count})
         return {
             "success": True,
             "shop": result

@@ -30,7 +30,7 @@ def add_order(data, id):
         db.session.commit()
         return {
             'success': True,
-            'order': new_order.getData()
+            'order': new_order.getData(),
         }, 201
     return {
         'success': False,
