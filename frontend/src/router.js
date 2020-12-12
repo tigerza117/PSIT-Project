@@ -4,7 +4,6 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Logout from './views/Logout.vue'
 import Register from './views/Register.vue'
-import Shops from './views/Shops.vue'
 import Shop from './views/Shop.vue'
 import Order from './views/Order.vue'
 import Admin from './views/Admin.vue'
@@ -19,7 +18,8 @@ const router = new Router({
       component: Home,
       name: 'home',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
@@ -47,19 +47,12 @@ const router = new Router({
       }
     },
     {
-      path: '/shops',
-      component: Shops,
-      name: 'shops',
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/shop',
+      path: '/shops/:id',
       component: Shop,
       name: 'shop',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
@@ -67,7 +60,8 @@ const router = new Router({
       component: Order,
       name: 'order',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
@@ -75,7 +69,8 @@ const router = new Router({
       component: Admin,
       name: 'admin',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     }
   ]
