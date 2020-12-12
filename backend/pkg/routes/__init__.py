@@ -18,7 +18,7 @@ def private():
                 return {
                     "status": False,
                     'message': 'Access denied'
-                }, 400
+                }, 401
             token = auth_header.split()[1]
             user = None
             try:
@@ -27,7 +27,7 @@ def private():
                 return {
                     "status": False,
                     'message': 'Invalid Token'
-                }, 400
+                }, 401
             return fn(user, *args, **kwargs)
         return wrapper
     return decorator
