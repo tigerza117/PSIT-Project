@@ -100,20 +100,31 @@ def user_orderonshop(data, id):
         return 'your order not found'
 
 @app.route('/shops/create', methods=['PUT'])
-@required_params({"name": str, "description": str, "img": str})
+@required_params({"name": str, "description": str, "owner_id": int, "img": str})
 @private()
 def creat_shops(data):
+    mydb = mysql.connector.connect(
+    host="103.91.205.130",
+    user="salmon",
+    password="_-.*<:e5w`DqqLJW",
+    database="salmon"
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT id FROM users")
+    myresult = mycursor.fetchall()
     body = request.get_json()
-    userData = data["id"]
     shop = Shop()
     shop.name = body["name"]
     shop.description = body["description"]
-    body.update({"owner_id": str(userData)})
-    shop.owner_id = body["owner_id"]
-    shop.img = body["img"]
-    db.session.add(shop)
-    db.session.commit()
-    return {'success': True}, 201
+    lst = [int(i[0]) for i in myresult]
+    if body["owner_id"] not in lst:
+        return 'your user not found'
+    else:
+        shop.owner_id = body["owner_id"]
+        shop.img = body["img"]
+        db.session.add(shop)
+        db.session.commit()
+        return {"'success": True}, 201
 
 """
 {
