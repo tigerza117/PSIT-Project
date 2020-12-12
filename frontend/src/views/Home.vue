@@ -7,9 +7,7 @@
       <div>
         <ul class="flex space-x-8">
           <li>
-            <button
-              class="btn-nav"
-            >
+            <button class="btn-nav">
               Sign-In
             </button>
           </li>
@@ -19,9 +17,7 @@
     <div class="container mx-auto mt-24 mb-4">
       <!--Body-->
       <div class="grid gap-4 px-4 mt-4 md:grid-cols-2 xl:grid-cols-3">
-        <div
-          class="menu-box"
-        >
+        <div class="menu-box">
           <img
             class="object-cover w-full h-64 rounded-lg"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
@@ -34,9 +30,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="menu-box"
-        >
+        <div class="menu-box">
           <img
             class="object-cover w-full h-64 rounded-lg"
             src="https://img.taste.com.au/00ptu0Py/taste/2016/11/linguine-with-prawns-chilli-garlic-rocket-95151-1.jpeg"
@@ -49,9 +43,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="menu-box"
-        >
+        <div class="menu-box">
           <img
             class="object-cover w-full h-64 rounded-lg"
             src="https://www.lifelinescreening.com/-/media/project/life-line-screening/life-line-screening/6-health-education/articles/diet-and-nutrition/fruits-and-vegetables.jpg"
@@ -64,9 +56,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="menu-box"
-        >
+        <div class="menu-box">
           <img
             class="object-cover w-full h-64 rounded-lg"
             src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
@@ -83,6 +73,4 @@
     </div>
   </div>
 </template>
-<style scoped lang="postcss">
-
-</style>
+<style scoped lang="postcss"></style>

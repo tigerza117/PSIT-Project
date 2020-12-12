@@ -49,27 +49,22 @@
           </VuePassword>
         </div>
         <div class="flex-box">
-          <input
-            type="text"
-            placeholder="Confirm password"
-            class="input"
-          />
+          <input type="text" placeholder="Confirm password" class="input" />
         </div>
-        <button
-          class="btn"
-        >
+        <button class="btn">
           Sign in
         </button>
         <p class="text-sm text-center text-gray-600">
           or sign in with
         </p>
-        <button
-          class="btn-gray"
-        >
+        <button class="btn-gray">
           GOOGLE
         </button>
         <p class="text-sm text-center text-gray-600">
-          Already member? <a href="#" class="underline text-blue-400 hover:text-blue-800">Sign in</a>
+          Already member?
+          <a href="#" class="underline text-blue-400 hover:text-blue-800"
+            >Sign in</a
+          >
         </p>
       </form>
     </div>
@@ -122,5 +117,4 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
-</style>
+<style lang="postcss" scoped></style>

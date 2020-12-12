@@ -22,7 +22,7 @@ export default {
   @apply w-full px-3 py-2 border border-blue-100 rounded-lg appearance-none text-gray-500 focus:outline-none focus:ring focus:border-blue-300 align-middle;
 }
 .VuePassword__Container {
-  @apply flex items-center ;
+  @apply flex items-center;
 }
 .topic {
   @apply mb-2 text-2xl text-gray-500;
