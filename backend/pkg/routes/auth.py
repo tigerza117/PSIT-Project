@@ -17,10 +17,14 @@ def login():
         if user.password == hashlib.md5(password.encode('utf-8')).hexdigest():
             encoded_jwt = jwt.encode({'id': user.id,'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, 'secret', algorithm='HS256')
             print(encoded_jwt)
-            return {'success': True, 'access_token': encoded_jwt.decode('utf-8')}, 200
-        else:
-            return {'message': 'email or password wrong'}, 400
-    return body
+            return {
+                'success': True,
+                'access_token': encoded_jwt.decode('utf-8')
+            }, 200
+    return {
+        'success': False,
+        'message': 'email or password wrong'
+    }, 400
 
 @app.route('/register', methods=["PUT"])
 @required_params({"email": str, "password": str, "fname": str, "lname": str})
@@ -33,4 +37,6 @@ def register():
     user.lname = body['lname']
     db.session.add(user)
     db.session.commit()
-    return {'success': True}, 201
+    return {
+        'success': True
+    }, 201
