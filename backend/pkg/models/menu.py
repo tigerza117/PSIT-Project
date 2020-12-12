@@ -14,7 +14,7 @@ class Menu(db.Model):
     category_id = db.Column(db.Integer, ForeignKey('categorys.id'))
 
     category = db.relationship("Category", uselist=False, backref="parent")
-
+    img = db.Column(db.String(120))
     def __repr__(self):
         return '<Task> %r' %self.id
 
@@ -26,7 +26,8 @@ class Menu(db.Model):
             'price': self.price,
             'extra_price': self.extra_price,
             'category_id': self.category_id,
-            'category': self.category.get('name')['name']
+            'category': self.category.get('name')['name'],
+            'img': self.img
         }
 
     def get(self, *keys: tuple):

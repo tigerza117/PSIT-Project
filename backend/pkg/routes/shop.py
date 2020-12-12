@@ -1,3 +1,4 @@
+from datetime import date
 from inspect import Parameter
 from os import stat_result
 from flask.globals import request
@@ -5,6 +6,7 @@ from flask import jsonify
 from ..models.shop import Shop
 from ..models.menu import Menu
 from ..models.order import Order
+from datetime import date
 # from .. models.order_menu import OrderMenu
 import mysql.connector
 from ..models import db
@@ -58,12 +60,14 @@ def put_inshops(data, id):
     order.customer_id = body["customer_id"]
     order.shop_id = body["shop_id"]
     order.note = body["note"]
-    mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW()) and customer_id = %s" %userID)
+    mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW()) and customer_id = %s and shop_id = %s" %(userID,id))
     myresult = mycursor.fetchall()
     print(len(myresult))
     if len(myresult) == 0:
         """queue path"""
-        body.update({"queue": 'A'+str(len(myresult))})
+        mycursor.execute("SELECT * FROM orders WHERE DATE(created_at) = DATE(NOW())")
+        result = mycursor.fetchall()
+        body.update({"queue": 'A'+str(len(result))})
         order.queue = body["queue"]
         """queue path"""
     else:
@@ -78,15 +82,20 @@ def put_inshops(data, id):
 def user_orderonshop(data, id):
     # shop = Shop.query.filter_by(id=id).first()
     userID = data["id"]
-    order = Order.query.filter_by(shop_id=id, customer_id=userID).first()
     mydb = mysql.connector.connect(
     host="103.91.205.130",
     user="salmon",
     password="_-.*<:e5w`DqqLJW",
     database="salmon"
     )
-    if order != None:
-        return order.get('queue')
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT queue, note FROM orders WHERE DATE(created_at) = DATE(NOW()) and customer_id = %s and shop_id = %s" %(userID,id))
+    myresult = mycursor.fetchall()
+    if myresult != None:
+        lst = [i for i in myresult]
+        print(lst)
+        dicts = {'queue': lst[0][0], 'note': lst[0][1]}
+        return dicts
     else:
         return 'your order not found'
 

@@ -17,6 +17,7 @@ class Shop(db.Model):
     owner = db.relationship("User", uselist=False, backref="parent")
     menus = db.relationship("Menu", lazy='dynamic')
     categorys = db.relationship("Category", lazy='dynamic')
+    img = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Task> %r' %self.id
@@ -26,7 +27,8 @@ class Shop(db.Model):
             'id': self.id,
             'name': self.name,
             'desciption': self.description,
-            'owner_id': self.owner_id
+            'owner_id': self.owner_id,
+            'img': self.img
         }
 
     def get(self, *keys: tuple):
