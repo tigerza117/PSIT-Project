@@ -15,13 +15,19 @@ def private():
         def wrapper(*args, **kwargs):
             auth_header = request.headers.get('Authorization', '')
             if not auth_header:
-                return {'message': 'Access denied'}, 400
+                return {
+                    "status": False,
+                    'message': 'Access denied'
+                }, 400
             token = auth_header.split()[1]
             user = None
             try:
                 user = jwt.decode(token, 'secret', algorithms=['HS256'])
             except (jwt.ExpiredSignature, jwt.InvalidSignatureError):
-                return {'message': 'Invalid Token'}, 400
+                return {
+                    "status": False,
+                    'message': 'Invalid Token'
+                }, 400
             return fn(user, *args, **kwargs)
         return wrapper
     return decorator
@@ -33,7 +39,7 @@ def required_params(required):
             _json = request.get_json()
             if isinstance(_json, NoneType):
                 response = {
-                    "status": "error",
+                    "status": False,
                     "message": "Request JSON is missing some required params",
                     #"missing": missing
                 }
@@ -42,7 +48,7 @@ def required_params(required):
                        if r not in _json]
             if missing:
                 response = {
-                    "status": "error",
+                    "status": False,
                     "message": "Request JSON is missing some required params",
                     #"missing": missing
                 }
@@ -51,7 +57,7 @@ def required_params(required):
                            if not isinstance(_json[r], required[r])]
             if wrong_types:
                 response = {
-                    "status": "error",
+                    "status": False,
                     "message": "Data types in the request JSON doesn't match the required format",
                     #"param_types": {k: str(v) for k, v in required.items()}
                 }
@@ -64,7 +70,9 @@ def required_params(required):
 
 def init_app(app: Flask):
     from . import auth, user, order, shop
+    from . import menu
     app.register_blueprint(auth.app)
     app.register_blueprint(user.app)
     app.register_blueprint(order.app)
     app.register_blueprint(shop.app)
+    app.register_blueprint(menu.app)

@@ -17,6 +17,7 @@ class Order(db.Model):
     updated_at = db.Column(db.DateTime, default=func.now())
 
     menus = db.relationship("OrderMenu", lazy='dynamic')
+
     def __repr__(self):
         return '<Task> %r' %self.id
 
