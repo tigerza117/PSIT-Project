@@ -10,6 +10,7 @@ class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     shop_id  = db.Column(db.Integer, ForeignKey('shops.id'))
     name = db.Column(db.String(120))
+    description = db.Column(db.String(4096))
     price = db.Column(db.Integer)
     extra_price = db.Column(db.Integer)
     category_id = db.Column(db.Integer, ForeignKey('categorys.id'))
@@ -27,6 +28,7 @@ class Menu(db.Model):
             'id': self.id,
             'shop_id': self.shop_id,
             'name': self.name,
+            'description': self.description,
             'price': self.price,
             'extra_price': self.extra_price,
             'category_id': self.category_id,
