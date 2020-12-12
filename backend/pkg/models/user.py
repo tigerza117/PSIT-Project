@@ -1,7 +1,5 @@
-from typing import Type, TypeVar
 from . import db
-
-T = TypeVar('T')
+from sqlalchemy import func
 
 class User(db.Model):
     """
@@ -13,7 +11,9 @@ class User(db.Model):
     lname = db.Column(db.String(120))
     password = db.Column(db.String(120))
     email = db.Column(db.String(120))
-    role = db.Column(db.String(120))
+    role = db.Column(db.String(120), default="member")
+    created_at = db.Column(db.DateTime, default=func.now())
+    updated_at = db.Column(db.DateTime, default=func.now())
 
     def __repr__(self):
         return '<Task> %r' %self.id

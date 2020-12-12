@@ -1,5 +1,6 @@
 from sqlalchemy.sql.schema import ForeignKey
 from . import db, menu
+from sqlalchemy import func
 
 class OrderMenu(db.Model):
     """
@@ -9,8 +10,10 @@ class OrderMenu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id  = db.Column(db.Integer, ForeignKey('orders.id'))
     menu_id = db.Column(db.Integer, ForeignKey('menus.id'))
-    extra = db.Column(db.Boolean)
+    extra = db.Column(db.Boolean, default=False)
     menu = db.relationship("Menu", uselist=False, backref="parent")
+    created_at = db.Column(db.DateTime, default=func.now())
+    updated_at = db.Column(db.DateTime, default=func.now())
 
     def __repr__(self):
         return '<Task> %r' %self.id
