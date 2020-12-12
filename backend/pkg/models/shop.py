@@ -1,7 +1,7 @@
-from typing import Type, TypeVar
 
 from sqlalchemy.sql.schema import ForeignKey
 from . import db, menu, user, category
+from sqlalchemy import func
 
 class Shop(db.Model):
     """
@@ -18,6 +18,8 @@ class Shop(db.Model):
     menus = db.relationship("Menu", lazy='dynamic')
     categorys = db.relationship("Category", lazy='dynamic')
     img = db.Column(db.String(120))
+    created_at = db.Column(db.DateTime, default=func.now())
+    updated_at = db.Column(db.DateTime, default=func.now())
 
     def __repr__(self):
         return '<Task> %r' %self.id
