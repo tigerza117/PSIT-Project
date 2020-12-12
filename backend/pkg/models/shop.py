@@ -13,13 +13,13 @@ class Shop(db.Model):
     name  = db.Column(db.String(120))
     description = db.Column(db.String(120))
     owner_id = db.Column(db.Integer, ForeignKey('users.id'))
-
-    owner = db.relationship("User", uselist=False, backref="parent")
-    menus = db.relationship("Menu", lazy='dynamic')
     categorys = db.relationship("Category", lazy='dynamic')
     img = db.Column(db.String(120))
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+
+    owner = db.relationship("User", uselist=False, backref="parent")
+    menus = db.relationship("Menu", lazy='dynamic')
 
     def __repr__(self):
         return '<Task> %r' %self.id
