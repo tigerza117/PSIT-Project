@@ -99,6 +99,21 @@ def user_orderonshop(data, id):
     else:
         return 'your order not found'
 
+@app.route('/shops/create', methods=['PUT'])
+@required_params({"name": str, "description": str, "img": str})
+@private()
+def creat_shops(data):
+    body = request.get_json()
+    userData = data["id"]
+    shop = Shop()
+    shop.name = body["name"]
+    shop.description = body["description"]
+    body.update({"owner_id": str(userData)})
+    shop.owner_id = body["owner_id"]
+    shop.img = body["img"]
+    db.session.add(shop)
+    db.session.commit()
+    return {'success': True}, 201
 
 """
 {

@@ -13,6 +13,7 @@ class User(db.Model):
     lname = db.Column(db.String(120))
     password = db.Column(db.String(120))
     email = db.Column(db.String(120))
+    role = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Task> %r' %self.id
@@ -22,7 +23,8 @@ class User(db.Model):
             'id': self.id,
             'fname': self.fname,
             'lname': self.lname,
-            'email': self.email
+            'email': self.email,
+            'role': self.role
         }
 
     def get(self, *keys: tuple):
