@@ -9,6 +9,7 @@ from datetime import date
 # from .. models.order_menu import OrderMenu
 from ..models import db
 from . import app, required_params, private
+from sqlalchemy import func
 
 @app.route('/shops', methods=['GET'])
 @private()
@@ -31,20 +32,31 @@ def add_shop(data):
         )
         db.session.add(shop)
         db.session.commit()
-        return {"success": True, "shop": shop.getData()}, 201
-    return {"success": False, "message": "user not found"}, 400
+        return {
+            "success": True,
+            "shop": shop.getData()
+        }, 201
+    return {
+        "success": False,
+        "message": "user not found"
+    }, 400
 
 @app.route('/shops/<id>', methods=['GET'])
 @private()
 def get_shop_byID(data, id):
     shop = Shop.query.filter_by(id=id).first()
-    menus = Menu.query.filter_by(shop_id=id)
-    order = Order.query.filter_by(shop_id=id, status='waiting').first()
-    queue = {'queue': 'close'}
-    if order != None:
-        queue = order.get('queue')
-    result = shop.get('name')
-    result.update({'menus': [i.get('name', 'price', 'extra_price', 'category') for i in menus]})
-    result.update(queue)
-    # print(result)
-    return result
+    if shop:
+        order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status=='waiting').first()
+        queue = {'queue': 'no queue'}
+        if order:
+            queue = order.get('queue')
+        result = shop.get('name', 'menus')
+        result.update(queue)
+        return {
+            "success": True,
+            "shop": result
+        }, 201
+    return {
+        "success": False,
+        "message": "shop not found"
+    }, 400
