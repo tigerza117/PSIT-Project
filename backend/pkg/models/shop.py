@@ -30,7 +30,8 @@ class Shop(db.Model):
             'name': self.name,
             'desciption': self.description,
             'owner_id': self.owner_id,
-            'img': self.img
+            'img': self.img,
+            'menus': [i.get('name', 'price', 'extra_price', 'category') for i in self.menus],
         }
 
     def get(self, *keys: tuple):
