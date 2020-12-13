@@ -20,7 +20,9 @@ class Category(db.Model):
         return {
             'id': self.id,
             'shop_id': self.shop_id,
-            'name': self.name
+            'name': self.name,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
     def get(self, *keys: tuple):

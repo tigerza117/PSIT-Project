@@ -29,7 +29,9 @@ class Order(db.Model):
             'note': self.note,
             'queue': self.queue,
             'status': self.status,
-            'menus': [i.getData() for i in self.menus]
+            'menus': [i.getData() for i in self.menus],
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
     def get(self, *keys: tuple):

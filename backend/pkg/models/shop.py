@@ -31,6 +31,8 @@ class Shop(db.Model):
             'owner_id': self.owner_id,
             'img': self.img,
             'menus': [i.get('id', 'name', 'price', 'extra_price', 'category', 'img', 'category_id', 'description') for i in self.menus],
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
     def get(self, *keys: tuple):

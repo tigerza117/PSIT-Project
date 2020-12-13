@@ -24,7 +24,9 @@ class User(db.Model):
             'fname': self.fname,
             'lname': self.lname,
             'email': self.email,
-            'role': self.role
+            'role': self.role,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
     def get(self, *keys: tuple):

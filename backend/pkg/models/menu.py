@@ -33,7 +33,9 @@ class Menu(db.Model):
             'extra_price': self.extra_price,
             'category_id': self.category_id,
             'category': self.category.get('name')['name'],
-            'img': self.img
+            'img': self.img,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
 
     def get(self, *keys: tuple):

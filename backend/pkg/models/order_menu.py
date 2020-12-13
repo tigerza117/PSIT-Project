@@ -24,7 +24,9 @@ class OrderMenu(db.Model):
         data = {
             'id': self.id,
             'extra': self.extra,
-            'total': self.total
+            'total': self.total,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
         data.update(self.menu.get('price', 'name', 'extra_price', 'category'))
         return data
