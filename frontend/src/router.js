@@ -4,10 +4,10 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Logout from './views/Logout.vue'
 import Register from './views/Register.vue'
-import Shops from './views/Shops.vue'
 import Shop from './views/Shop.vue'
 import Order from './views/Order.vue'
 import Admin from './views/Admin.vue'
+import Merchant from './views/Merchant.vue'
 
 Vue.use(Router)
 
@@ -19,7 +19,8 @@ const router = new Router({
       component: Home,
       name: 'home',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
@@ -47,27 +48,30 @@ const router = new Router({
       }
     },
     {
-      path: '/shops',
-      component: Shops,
-      name: 'shops',
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/shop',
+      path: '/shops/:id',
       component: Shop,
       name: 'shop',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
-      path: '/order',
+      path: '/order/:id',
       component: Order,
       name: 'order',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
+      }
+    },
+    {
+      path: '/merchant',
+      component: Merchant,
+      name: 'merchant',
+      meta: {
+        requiresAuth: true,
+        layout: 'private'
       }
     },
     {
@@ -75,7 +79,8 @@ const router = new Router({
       component: Admin,
       name: 'admin',
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        layout: 'private'
       }
     }
   ]
@@ -110,6 +115,17 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+import NProgress from 'nprogress'
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  NProgress.set(0.1)
+  next()
+})
+router.afterEach(() => {
+  setTimeout(() => NProgress.done(), 1000)
 })
 
 export default router

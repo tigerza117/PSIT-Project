@@ -18,7 +18,7 @@ def private():
                 return {
                     "status": False,
                     'message': 'Access denied'
-                }, 400
+                }, 401
             token = auth_header.split()[1]
             user = None
             try:
@@ -27,7 +27,7 @@ def private():
                 return {
                     "status": False,
                     'message': 'Invalid Token'
-                }, 400
+                }, 401
             return fn(user, *args, **kwargs)
         return wrapper
     return decorator
@@ -69,8 +69,7 @@ def required_params(required):
 
 
 def init_app(app: Flask):
-    from . import auth, user, order, shop
-    from . import menu
+    from . import auth, user, order, shop, menu
     app.register_blueprint(auth.app)
     app.register_blueprint(user.app)
     app.register_blueprint(order.app)

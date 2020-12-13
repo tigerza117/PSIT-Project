@@ -1,11 +1,22 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
   </div>
 </template>
 
 <script>
 export default {
+  computed: {
+    layout() {
+      let layout = this.$route.meta.layout
+      return layout ? 'layout-' + layout : 'layout-default'
+    }
+  },
+  mounted() {
+    console.log()
+  },
   name: 'App',
   components: {}
 }
@@ -28,7 +39,7 @@ export default {
   @apply mb-2 text-2xl text-gray-500;
 }
 .menu-box {
-  @apply relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+  @apply relative transition duration-500 ease-in-out transform;
 }
 .nav-page {
   @apply fixed top-0 z-20 flex flex-wrap items-center w-full p-4 px-6 m-auto bg-green-500 place-content-between;
@@ -37,6 +48,6 @@ export default {
   @apply p-2 transition duration-500 bg-white rounded hover:bg-red-500;
 }
 .img-menu {
-  @apply object-cover w-full h-64 rounded-lg;
+  @apply object-cover w-full h-32 md:h-48 lg:h-64 rounded-lg;
 }
 </style>

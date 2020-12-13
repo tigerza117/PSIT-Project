@@ -7,7 +7,6 @@ class Shop(db.Model):
     """
     shop models
     """
-
     __tablename__ = 'shops'
     id = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(120))
@@ -28,10 +27,10 @@ class Shop(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'desciption': self.description,
+            'description': self.description,
             'owner_id': self.owner_id,
             'img': self.img,
-            'menus': [i.get('name', 'price', 'extra_price', 'category') for i in self.menus],
+            'menus': [i.get('id', 'name', 'price', 'extra_price', 'category', 'img', 'category_id', 'description') for i in self.menus],
         }
 
     def get(self, *keys: tuple):

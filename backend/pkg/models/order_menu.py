@@ -11,9 +11,11 @@ class OrderMenu(db.Model):
     order_id  = db.Column(db.Integer, ForeignKey('orders.id'))
     menu_id = db.Column(db.Integer, ForeignKey('menus.id'))
     extra = db.Column(db.Boolean, default=False)
-    menu = db.relationship("Menu", uselist=False, backref="parent")
+    total  = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+
+    menu = db.relationship("Menu", uselist=False, backref="parent")
 
     def __repr__(self):
         return '<Task> %r' %self.id
@@ -21,7 +23,8 @@ class OrderMenu(db.Model):
     def getData(self) -> dict:
         data = {
             'id': self.id,
-            'extra': self.extra
+            'extra': self.extra,
+            'total': self.total
         }
         data.update(self.menu.get('price', 'name', 'extra_price', 'category'))
         return data
