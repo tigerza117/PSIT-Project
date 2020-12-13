@@ -51,6 +51,7 @@
 
 <script>
 import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   data() {
     return {
@@ -62,15 +63,28 @@ export default {
   },
   methods: {
     login() {
-      axios.post('login', this.auth).then(res => {
-        let data = res.data
-        if (data.access_token) {
-          console.log(data.access_token)
-          localStorage.setItem('jwt', data.access_token)
-          let next = this.$route.query.nextUrl ? this.$route.query.nextUrl : '/'
-          this.$router.push(next)
-        }
-      })
+      axios
+        .post('login', this.auth)
+        .then(res => {
+          let data = res.data
+          if (data.access_token) {
+            console.log(data.access_token)
+            localStorage.setItem('jwt', data.access_token)
+            let next = this.$route.query.nextUrl
+              ? this.$route.query.nextUrl
+              : '/'
+            this.$router.push(next)
+          }
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('เข้าสู่ระบบไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
     }
   }
 }

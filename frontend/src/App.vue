@@ -48,6 +48,6 @@ export default {
   @apply p-2 transition duration-500 bg-white rounded hover:bg-red-500;
 }
 .img-menu {
-  @apply object-cover w-full h-64 rounded-lg;
+  @apply object-cover w-full h-32 md:h-48 lg:h-64 rounded-lg;
 }
 </style>

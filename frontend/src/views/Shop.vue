@@ -1,28 +1,25 @@
 <template>
   <div>
-    <div class="nav-page">
-      <!--Logo-->
-      <div class="text-4xl font-bold text-white">LME</div>
-      <!--menu-->
-      <div>
-        <ul class="flex space-x-8">
-          <li>
-            <button class="btn-nav">
-              Logout
-            </button>
-          </li>
-        </ul>
+    <div v-if="!shop"></div>
+    <div v-else>
+      <div class="my-6 text-4xl font-bold">
+        {{ shop.name
+        }}<span class="float-right"
+          ><button
+            class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
+            v-on:click="goHome"
+          >
+            กลับ
+          </button></span
+        >
       </div>
-    </div>
-    <div class="px-4 mt-24 mb-4 md:container md:mx-auto">
-      <!--Body-->
-      <div class="my-6 text-4xl font-bold">ร้าน น้องเสือ</div>
+
       <div class="flex items-center border rounded-lg">
         <div class="w-full">
           <div class="flex justify-center">
             <lottie-animation
               class="-mr-16"
-              path="cooking.json"
+              :path="shop.waiting > 0 ? 'cooking.json' : 'lazy_cat.json'"
               :loop="true"
               :autoPlay="true"
               :speed="1"
@@ -30,86 +27,37 @@
             ></lottie-animation>
           </div>
           <div class="py-10 text-center">
-            <div class="text-4xl font-bold lg:text-6xl">ขณะนี้คิวที่ A07</div>
-            <div class="mt-2 text-gray-500">เหลืออีก 5 คิว</div>
+            <div class="text-4xl font-bold">
+              <span v-if="shop.queue == 'no queue'">ร้านนี้ไม่มีคิว</span>
+              <span v-else>ออเดอร์ คิวที่ {{ shop.queue }} </span>
+            </div>
+            <div v-if="shop.waiting > 0" class="mt-2 text-gray-500">
+              เหลืออีก {{ shop.waiting }} คิว
+            </div>
           </div>
         </div>
       </div>
-      <div class="btn-order">
-        สั่งอาหาร
-      </div>
-      <div class="my-6 text-2xl font-bold">เมนูอาหาร</div>
-      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <div class="menu-box">
-          <img
-            class="img-menu"
-            src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
+
+      <order :menus="menus" v-if="menus.length" />
+      <queue v-if="shop.order" :id="shop.order.id" />
+
+      <div>
+        <div class="my-6 text-2xl font-bold">เมนูอาหาร</div>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <menu-item
+            v-for="menu in shop.menus"
+            :key="menu.id"
+            :name="menu.name"
+            :img="menu.img"
+            @click.native="selectMenu(menu)"
           />
-          <!--Card-->
-          <div class="absolute top-0">
-            <div>
-              <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
-                Pasta in Tomato Sauce
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="menu-box">
-          <img
-            class="img-menu"
-            src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
-          />
-          <!--Card-->
-          <div class="absolute top-0">
-            <div>
-              <div class="name-menu">
-                Pasta in Tomato Sauce
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="menu-box">
-          <img
-            class="img-menu"
-            src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
-          />
-          <!--Card-->
-          <div class="absolute top-0">
-            <div>
-              <div class="name-menu">
-                Pasta in Tomato Sauce
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="menu-box">
-          <img
-            class="img-menu"
-            src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
-          />
-          <!--Card-->
-          <div class="absolute top-0">
-            <div>
-              <div class="name-menu">
-                Pasta in Tomato Sauce
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="menu-box">
-          <img
-            class="img-menu"
-            src="https://img.hellofresh.com/f_auto,fl_lossy,q_auto,w_1200/hellofresh_s3/image/chilli-prawn-linguine-4e6a5cd0.jpg"
-          />
-          <!--Card-->
-          <div class="absolute top-0">
-            <div>
-              <div class="name-menu">
-                Pasta in Tomato Sauce
-              </div>
-            </div>
-          </div>
-        </div>
+        <menu-select
+          v-if="showSelect"
+          v-bind="select"
+          @close="showSelect = false"
+          @selected="selectedMenu"
+        />
       </div>
     </div>
   </div>
@@ -117,17 +65,67 @@
 
 <script>
 import LottieAnimation from 'lottie-vuejs/src/LottieAnimation.vue'
+import axios from 'axios'
+import MenuItem from '../components/shop/MenuItem.vue'
+import Order from '../components/shop/Order.vue'
+import MenuSelect from '../components/shop/MenuSelect.vue'
+import Queue from '../components/shop/Queue.vue'
+
+const setIntervalAsync = (fn, ms) => {
+  fn().then(() => {
+    setTimeout(() => setIntervalAsync(fn, ms), ms)
+  })
+}
+
 export default {
   components: {
-    LottieAnimation
+    LottieAnimation,
+    MenuItem,
+    Order,
+    MenuSelect,
+    Queue
+  },
+  data() {
+    return {
+      shop: null,
+      select: null,
+      showSelect: false,
+      menus: [],
+      interval: null
+    }
+  },
+  methods: {
+    goHome() {
+      this.$router.push('/')
+    },
+    selectMenu(menu) {
+      if (!this.shop.order) {
+        this.select = menu
+        this.showSelect = true
+      }
+    },
+    selectedMenu(data) {
+      this.menus.push(data)
+      this.showSelect = false
+    },
+    fetchData() {
+      return axios
+        .get('shops/' + this.$route.params.id)
+        .then(res => (this.shop = res.data.shop))
+    }
+  },
+  created() {
+    this.fetchData().finally(() => {
+      this.interval = setIntervalAsync(this.fetchData, 5000)
+    })
+  },
+  beforeDestroy() {
+    clearTimeout(this.interval)
   }
 }
 </script>
 
 <style scoped lang="postcss">
-.btn-order {
-  @apply p-4 mt-6 text-xl text-center text-white bg-green-500 transition duration-500 rounded-lg hover:bg-green-600;
-}
 .name-menu {
   @apply p-2 mx-2 mt-2 bg-white rounded-lg;
 }

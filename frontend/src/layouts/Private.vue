@@ -7,14 +7,12 @@
       <div>
         <ul class="flex space-x-8">
           <li>
-            <button class="btn-nav">
-              Sign-In
-            </button>
+            <button class="btn-nav"></button>
           </li>
         </ul>
       </div>
     </div>
-    <div class="max-w-4xl px-4 mx-auto mt-24 mb-4">
+    <div class="max-w-4xl px-4 mx-auto mt-24 mb-8">
       <!--Body-->
       <slot />
     </div>

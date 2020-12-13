@@ -2,12 +2,14 @@
   <transition name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container">
+        <div class=" modal-container">
           <div class="modal-header">
             <slot name="header">
               default header
             </slot>
           </div>
+
+          <hr />
 
           <div class="modal-body">
             <slot name="body">
