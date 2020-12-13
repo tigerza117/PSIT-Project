@@ -10,11 +10,15 @@ import Default from './layouts/Default.vue'
 import Private from './layouts/Private.vue'
 import Modal from './components/Modal.vue'
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 Vue.component('layout-default', Default)
 Vue.component('layout-private', Private)
 Vue.component('modal', Modal)
 
 Vue.use(Vuex)
+Vue.use(NProgress)
 
 Axios.interceptors.request.use(request => {
   let token = localStorage.getItem('jwt')
@@ -40,7 +44,7 @@ Axios.interceptors.response.use(
   }
 )
 
-Axios.defaults.baseURL = 'http://localhost:5000/'
+Axios.defaults.baseURL = 'https://api.tigerza117.xyz/'
 
 Vue.prototype.$http = Axios
 

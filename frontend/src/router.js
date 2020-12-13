@@ -7,6 +7,7 @@ import Register from './views/Register.vue'
 import Shop from './views/Shop.vue'
 import Order from './views/Order.vue'
 import Admin from './views/Admin.vue'
+import Merchant from './views/Merchant.vue'
 
 Vue.use(Router)
 
@@ -56,9 +57,18 @@ const router = new Router({
       }
     },
     {
-      path: '/order',
+      path: '/order/:id',
       component: Order,
       name: 'order',
+      meta: {
+        requiresAuth: true,
+        layout: 'private'
+      }
+    },
+    {
+      path: '/merchant',
+      component: Merchant,
+      name: 'merchant',
       meta: {
         requiresAuth: true,
         layout: 'private'
@@ -105,6 +115,17 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+import NProgress from 'nprogress'
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  NProgress.set(0.1)
+  next()
+})
+router.afterEach(() => {
+  setTimeout(() => NProgress.done(), 1000)
 })
 
 export default router
