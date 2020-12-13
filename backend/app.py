@@ -14,4 +14,4 @@ with app.app_context():
     app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
     CORS(app)
     routes.init_app(app)
-app.run(debug=True)
+app.run(debug=True, host='0.0.0.0')
