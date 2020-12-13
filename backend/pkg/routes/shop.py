@@ -9,7 +9,7 @@ from datetime import date
 # from .. models.order_menu import OrderMenu
 from ..models import db
 from . import app, required_params, private
-from sqlalchemy import func
+from sqlalchemy import func, or_
 
 @app.route('/shops', methods=['GET'])
 @private()
@@ -38,27 +38,30 @@ def add_shop(data):
         }, 201
     return {
         "success": False,
-        "message": "user not found"
+        "message": "ไม่พบผู้ใช้งาน"
     }, 400
 
-@app.route('/shops/<id>', methods=['GET'])
+@app.route('/shops/<int:id>', methods=['GET'])
 @private()
 def get_shop_byID(data, id):
     shop = Shop.query.filter_by(id=id).first()
     if shop:
-        order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status=='waiting').first()
-        waiting = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status == 'ordering').count()
+        order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status == 'waiting').first()
+        waiting = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, or_(Order.status == 'ordering', Order.status == 'waiting')).count()
         queue = {'queue': 'no queue'}
         if order:
             queue = order.get('queue')
         result = shop.get('name', 'menus')
         result.update(queue)
-        result.update({'waiting': waiting})
+        result.update({'waiting': waiting}),
+        customer_order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.customer_id==data['id'], or_(Order.status == 'ordering', Order.status == 'waiting')).first()
+        if customer_order:
+            result.update({'order': customer_order.getData()})
         return {
             "success": True,
             "shop": result
         }, 201
     return {
         "success": False,
-        "message": "shop not found"
+        "message": "ไม่พบร้านค้า"
     }, 400
