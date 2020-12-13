@@ -10,12 +10,29 @@ from flask.globals import request
 
 @app.route('/orders', methods=['GET'])
 @private()
-def orders(data):
-    print(data)
+def get_orders(data):
     orderds = Order().query.all()
     return {'success': True, 'orders': [i.getData() for i in orderds]}, 200
 
-@app.route('/shops/<id>', methods=['PUT'])
+@app.route('/orders/<int:id>', methods=['GET'])
+@private()
+def get_order_byID(data, id):
+    order = Order.query.filter_by(id=id).first()
+    if order:
+        return {'success': True, 'order': order.getData()}, 200
+    return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
+
+@app.route('/orders/<int:id>', methods=['DELETE'])
+@private()
+def del_order_byID(data, id):
+    order = Order.query.filter_by(id=id).first()
+    if order:
+        order.status = 'cancelled'
+        db.session.commit()
+        return {'success': True}, 200
+    return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
+
+@app.route('/shops/<int:id>', methods=['PUT'])
 @required_params({"note": str, "menus": list})
 @private()
 def add_order(data, id):
@@ -25,7 +42,7 @@ def add_order(data, id):
     if not menus:
         return {
             'success': False,
-            'message': 'menus not founds'
+            'message': 'ไม่พบเมนู'
         }, 400
     have_order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.customer_id==userID, or_(Order.status == 'ordering', Order.status == 'waiting')).count()
     if not have_order:
@@ -43,10 +60,10 @@ def add_order(data, id):
         }, 201
     return {
         'success': False,
-        'message': 'you already have order'
+        'message': 'คุณมีออเดอร์ของร้านนี้อยู่แล้ว'
     }, 400
 
-@app.route('/shops/<id>/order', methods=['GET'])
+@app.route('/shops/<int:id>/order', methods=['GET'])
 @private()
 def user_order(data, id):
     # shop = Shop.query.filter_by(id=id).first()
@@ -60,5 +77,5 @@ def user_order(data, id):
     else:
         return {
             'success': False,
-            'message': 'your order not found'
+            'message': 'คุณไม่มีออเดอร์'
         }, 400
