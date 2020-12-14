@@ -7,7 +7,6 @@ from ..models.order import Order
 from ..models.menu import Menu
 from ..models.shop import Shop
 from ..models import db
-from ..models.category import Category
 from . import app, private, required_params
 from sqlalchemy import func, or_
 from flask.globals import request
@@ -131,7 +130,7 @@ def get_merchant_menus(data):
     }, 400
 
 @app.route('/merchant/menus', methods=['PUT'])
-@required_params({"name": str, "description": str, "price": int, "extra_price": int, "category_id": int, "img": str})
+@required_params({"name": str, "description": str, "price": int, "extra_price": int,  "img": str})
 @private()
 def add_menu(data):
     shop = Shop.query.filter_by(owner_id=data['id']).first()
@@ -143,7 +142,6 @@ def add_menu(data):
             name = body["name"],
             price = body["price"],
             extra_price = body["extra_price"],
-            category_id = body["category_id"],
             img = body["img"]
         )
         db.session.add(menu)
@@ -158,7 +156,7 @@ def add_menu(data):
     }, 400
 
 @app.route('/merchant/menus/<id>', methods=['PATCH'])
-@required_params({"name": str, "description": str, "price": int, "extra_price": int, "category_id": int, "img": str})
+@required_params({"name": str, "description": str, "price": int, "extra_price": int, "img": str})
 @private()
 def update_menu(data, id):
     shop = Shop.query.filter_by(owner_id=data['id']).first()
@@ -170,7 +168,6 @@ def update_menu(data, id):
             menu.description = body['description']
             menu.price = body['price']
             menu.extra_price = body['extra_price']
-            menu.category_id = body['category_id']
             menu.img = body['img']
             return {
                 'success': True,
@@ -185,7 +182,7 @@ def update_menu(data, id):
     }, 400
 
 @app.route('/merchant/menus/<id>', methods=['DELETE'])
-@required_params({"name": str, "description": str, "price": int, "extra_price": int, "category_id": int, "img": str})
+@required_params({"name": str, "description": str, "price": int, "extra_price": int, "img": str})
 @private()
 def del_menu(data, id):
     shop = Shop.query.filter_by(owner_id=data['id']).first()

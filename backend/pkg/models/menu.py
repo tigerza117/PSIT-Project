@@ -1,5 +1,4 @@
 from sqlalchemy.sql.schema import ForeignKey
-from . import db, category
 from sqlalchemy import func
 
 class Menu(db.Model):
@@ -18,8 +17,6 @@ class Menu(db.Model):
     updated_at = db.Column(db.DateTime, default=func.now())
     deleted_at = db.Column(db.DateTime)
 
-    category = db.relationship("Category", uselist=False, backref="parent")
-
     def __repr__(self):
         return '<Task> %r' %self.id
 
@@ -31,8 +28,6 @@ class Menu(db.Model):
             'description': self.description,
             'price': self.price,
             'extra_price': self.extra_price,
-            'category_id': self.category_id,
-            'category': self.category.get('name')['name'],
             'img': self.img,
             'created_at': self.created_at,
             'updated_at': self.updated_at

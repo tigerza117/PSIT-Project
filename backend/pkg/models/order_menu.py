@@ -29,7 +29,7 @@ class OrderMenu(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
-        data.update(self.menu.get('price', 'name', 'extra_price', 'category'))
+        data.update(self.menu.get('price', 'name', 'extra_price'))
         return data
 
     def get(self, *keys: tuple):

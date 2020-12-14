@@ -5,7 +5,6 @@ from flask.globals import request
 from flask import jsonify
 from ..models.shop import Shop
 from ..models.menu import Menu
-from ..models.category import Category
 from datetime import date
 # from .. models.order_menu import OrderMenu
 import mysql.connector
@@ -15,7 +14,7 @@ import hashlib
 import jwt
 
 @app.route('/shops/<id>/menu', methods=['PUT'])
-@required_params({"name": str, "description": str, "price": int, "extra_price": int, "category_id": int, "img": str})
+@required_params({"name": str, "description": str, "price": int, "extra_price": int, "img": str})
 @private()
 def add_menu(data, id):
     body = request.get_json()
@@ -24,7 +23,6 @@ def add_menu(data, id):
         name = body["name"],
         price = body["price"],
         extra_price = body["extra_price"],
-        category_id = body["category_id"],
         img = body["img"]
     )
     db.session.add(menu)

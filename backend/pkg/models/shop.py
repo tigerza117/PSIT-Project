@@ -1,6 +1,6 @@
 
 from sqlalchemy.sql.schema import ForeignKey
-from . import db, menu, user, category
+from . import db, menu, user
 from sqlalchemy import func
 
 class Shop(db.Model):
@@ -31,7 +31,7 @@ class Shop(db.Model):
             'description': self.description,
             'owner_id': self.owner_id,
             'img': self.img,
-            'menus': [i.get('id', 'name', 'price', 'extra_price', 'category', 'img', 'category_id', 'description') for i in self.menus],
+            'menus': [i.get('id', 'name', 'price', 'extra_price', 'img', 'description') for i in self.menus],
             'open': self.open,
             'created_at': self.created_at,
             'updated_at': self.updated_at
