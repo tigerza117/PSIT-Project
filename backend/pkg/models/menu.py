@@ -1,5 +1,6 @@
 from sqlalchemy.sql.schema import ForeignKey
 from sqlalchemy import func
+from . import db
 
 class Menu(db.Model):
     """
