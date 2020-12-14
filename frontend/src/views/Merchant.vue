@@ -144,14 +144,12 @@ export default {
       shop: null,
       menus: [],
       orders: [],
-      categorys: [],
       interval: null
     }
   },
   created() {
     this.fetchMenus()
     this.fetchOrders()
-    this.fetchCategorys()
     this.interval = setIntervalAsync(this.fetchShop, 2000)
   },
   beforeDestroy() {
@@ -166,11 +164,6 @@ export default {
     },
     fetchOrders() {
       axios.get('/merchant/orders').then(res => (this.orders = res.data.orders))
-    },
-    fetchCategorys() {
-      axios
-        .get('/merchant/categorys')
-        .then(res => (this.categorys = res.data.categorys))
     },
     nextOrder() {
       axios.post('/merchant/orders/next')
