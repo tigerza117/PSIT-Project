@@ -6,16 +6,15 @@
 
 - [x] Auth
 - [x] Ordering
-- [ ] Notification
-- [ ] Admin control
-- [ ] Merchant control
+- [x] Admin control
+- [x] Merchant control
 
 ## Pages
 
 - [x] Login
 - [x] Register
-- [ ] Admin
-- [ ] Merchant
+- [x] Admin
+- [x] Merchant
 - [x] Shop
 - [x] Order
 
