@@ -73,6 +73,11 @@ export default {
             let next = this.$route.query.nextUrl
               ? this.$route.query.nextUrl
               : '/'
+            axios
+              .get('profile')
+              .then(res =>
+                localStorage.setItem('user', JSON.stringify(res.data))
+              )
             this.$router.push(next)
           }
         })

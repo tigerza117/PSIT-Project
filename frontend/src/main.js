@@ -37,6 +37,7 @@ Axios.interceptors.response.use(
     if (res) {
       if (401 === res.status && localStorage.getItem('jwt')) {
         localStorage.removeItem('jwt')
+        localStorage.removeItem('user')
         window.location = '/login'
       }
     }

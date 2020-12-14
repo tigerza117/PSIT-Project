@@ -2,9 +2,15 @@
   <div>
     <div v-if="!shop"></div>
     <div v-else>
-      <div class="my-6 text-4xl font-bold">
-        {{ shop.name
-        }}<span class="float-right"
+      <div class="my-6">
+        <span class="mr-4 text-3xl font-bold">{{ shop.name }}</span>
+        <button
+          v-if="isMerchant"
+          class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
+          v-on:click="goMerchant"
+        >
+          จัดการร้าน</button
+        ><span class="float-right"
           ><button
             class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
             v-on:click="goHome"
@@ -19,7 +25,13 @@
           <div class="flex justify-center">
             <lottie-animation
               class="-mr-16"
-              :path="shop.waiting > 0 ? 'cooking.json' : 'lazy_cat.json'"
+              :path="
+                !shop.open
+                  ? 'close.json'
+                  : shop.waiting > 0
+                  ? 'cooking.json'
+                  : 'lazy_cat.json'
+              "
               :loop="true"
               :autoPlay="true"
               :speed="1"
@@ -28,7 +40,8 @@
           </div>
           <div class="py-10 text-center">
             <div class="text-4xl font-bold">
-              <span v-if="shop.queue == 'no queue'">ร้านนี้ไม่มีคิว</span>
+              <span v-if="!shop.open">ร้านปิด</span>
+              <span v-else-if="shop.queue == 'no queue'">ร้านนี้ไม่มีคิว</span>
               <span v-else>ออเดอร์ คิวที่ {{ shop.queue }} </span>
             </div>
             <div v-if="shop.waiting > 0" class="mt-2 text-gray-500">
@@ -41,7 +54,7 @@
       <order :menus="menus" v-if="menus.length" />
       <queue v-if="shop.order" :id="shop.order.id" />
 
-      <div>
+      <div v-if="shop.open">
         <div class="my-6 text-2xl font-bold">เมนูอาหาร</div>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
           <menu-item
@@ -94,9 +107,21 @@ export default {
       interval: null
     }
   },
+  computed: {
+    isMerchant() {
+      let user = JSON.parse(localStorage.getItem('user'))
+      if (user) {
+        return user.id == this.shop.owner_id
+      }
+      return false
+    }
+  },
   methods: {
     goHome() {
       this.$router.push('/')
+    },
+    goMerchant() {
+      this.$router.push('/merchant')
     },
     selectMenu(menu) {
       if (!this.shop.order) {
@@ -116,11 +141,11 @@ export default {
   },
   created() {
     this.fetchData().finally(() => {
-      this.interval = setIntervalAsync(this.fetchData, 5000)
+      this.interval = setIntervalAsync(this.fetchData, 2000)
     })
   },
   beforeDestroy() {
-    clearTimeout(this.interval)
+    clearInterval(this.interval)
   }
 }
 </script>
