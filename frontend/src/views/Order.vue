@@ -13,6 +13,7 @@
           </button></span
         >
       </div>
+
       <div class="flex items-center border rounded-lg">
         <div class="w-full">
           <div class="flex justify-center">
@@ -48,6 +49,7 @@
           <div class="text-xl">
             <h2>คิว : {{ order.queue }}</h2>
             <h3>สถานะ : {{ status() }}</h3>
+            <h3>โน๊ต : {{ order.note }}</h3>
           </div>
           <hr class="mt-3" />
           <div>
@@ -167,8 +169,8 @@ export default {
       .then(() => this.fetchShop())
       .finally(() => {
         this.loading = false
-        this.interval = setIntervalAsync(this.fetchData, 5000)
-        this.interval_shop = setIntervalAsync(this.fetchShop, 5000)
+        this.interval = setIntervalAsync(this.fetchData, 2000)
+        this.interval_shop = setIntervalAsync(this.fetchShop, 2000)
       })
   },
   beforeDestroy() {
