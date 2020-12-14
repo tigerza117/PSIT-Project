@@ -49,25 +49,20 @@ def add_shop(data):
         "message": "ไม่พบผู้ใช้งาน"
     }, 400
 
-@app.route('/admin/users', methods=['PUT'])
-@required_params({"name": str, "description": str, "email": str, "img": str})
+@app.route('/admin/users/<id>', methods=['PATCH'])
+@required_params({"fname": str, "lname": str, "email": str})
 @private()
-def add_user(data):
+def add_user(data, id):
     body = request.get_json()
-    owner = User.query.filter_by(email=data['email'])
-    if owner:
-        shop = Shop(
-            name=body["name"],
-            description=body["description"],
-            owner_id=owner.id,
-            img=body["img"]
-        )
-        db.session.add(shop)
+    user = User.query.filter_by(id=id).first()
+    if user:
+        user.fname = body['fname']
+        user.lname = body['lname']
+        user.email = body['email']
         db.session.commit()
         return {
             "success": True,
-            "shop": shop.getData()
-        }, 201
+        }, 200
     return {
         "success": False,
         "message": "ไม่พบผู้ใช้งาน"

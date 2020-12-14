@@ -13,10 +13,10 @@ class Menu(db.Model):
     description = db.Column(db.String(4096))
     price = db.Column(db.Integer)
     extra_price = db.Column(db.Integer)
-    category_id = db.Column(db.Integer, ForeignKey('categorys.id'))
     img = db.Column(db.String(120))
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+    deleted_at = db.Column(db.DateTime)
 
     category = db.relationship("Category", uselist=False, backref="parent")
 

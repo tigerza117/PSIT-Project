@@ -14,6 +14,7 @@ class OrderMenu(db.Model):
     total  = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+    deleted_at = db.Column(db.DateTime)
 
     menu = db.relationship("Menu", uselist=False, backref="parent")
 

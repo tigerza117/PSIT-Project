@@ -8,12 +8,6 @@ from . import app, private, required_params
 from sqlalchemy import func, or_
 from flask.globals import request
 
-@app.route('/orders', methods=['GET'])
-@private()
-def get_orders(data):
-    orderds = Order().query.all()
-    return {'success': True, 'orders': [i.getData() for i in orderds]}, 200
-
 @app.route('/orders/<int:id>', methods=['GET'])
 @private()
 def get_order_byID(data, id):

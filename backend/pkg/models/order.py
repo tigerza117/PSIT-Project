@@ -15,6 +15,7 @@ class Order(db.Model):
     status = db.Column(db.String(120), default="ordering")
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+    deleted_at = db.Column(db.DateTime)
 
     menus = db.relationship("OrderMenu", lazy='dynamic')
 

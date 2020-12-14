@@ -12,10 +12,11 @@ class Shop(db.Model):
     name  = db.Column(db.String(120))
     description = db.Column(db.String(120))
     owner_id = db.Column(db.Integer, ForeignKey('users.id'))
-    categorys = db.relationship("Category", lazy='dynamic')
     img = db.Column(db.String(120))
+    open = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now())
+    deleted_at = db.Column(db.DateTime)
 
     owner = db.relationship("User", uselist=False, backref="parent")
     menus = db.relationship("Menu", lazy='dynamic')
@@ -31,6 +32,7 @@ class Shop(db.Model):
             'owner_id': self.owner_id,
             'img': self.img,
             'menus': [i.get('id', 'name', 'price', 'extra_price', 'category', 'img', 'category_id', 'description') for i in self.menus],
+            'open': self.open,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
