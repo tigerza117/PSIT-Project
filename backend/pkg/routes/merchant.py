@@ -138,17 +138,18 @@ def add_menu(data):
         body = request.get_json()
         shop = shop.getData()
         menu = Menu(
-            shop_id = shop['id'],
-            name = body["name"],
-            price = body["price"],
-            extra_price = body["extra_price"],
-            img = body["img"]
+            shop_id=shop['id'],
+            name = body['name'],
+            description = body['description'],
+            price = body['price'],
+            extra_price = body['extra_price'],
+            img=body['img']
         )
         db.session.add(menu)
         db.session.commit()
         return {
             'success': True,
-            'menu': menu.getDataa()
+            'menu': menu.getData()
         }, 201
     return {
         'success': False,
@@ -169,6 +170,7 @@ def update_menu(data, id):
             menu.price = body['price']
             menu.extra_price = body['extra_price']
             menu.img = body['img']
+            db.session.commit()
             return {
                 'success': True,
             }, 200
