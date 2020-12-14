@@ -25,7 +25,7 @@ def get_shop_byID(data, id):
         order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, Order.status == 'waiting').first()
         waiting = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, or_(Order.status == 'ordering', Order.status == 'waiting')).count()
         queue = {'queue': 'no queue'}
-        result = shop.get('name', 'menus', 'open')
+        result = shop.get('name', 'menus', 'open', 'owner_id')
         if order:
             queue = order.get('queue')
             result.update({'order': order.getData()})
