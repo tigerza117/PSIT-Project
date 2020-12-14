@@ -19,13 +19,15 @@
         />
         <input
           placeholder="ราคาธรรมดา"
-          v-model="menu.price"
+          v-model.number="menu.price"
           class="w-full p-2"
+          type="number"
         />
         <input
           placeholder="ราคาพิเศษ"
-          v-model="menu.extra_price"
+          v-model.number="menu.extra_price"
           class="w-full p-2"
+          type="number"
         />
         <input placeholder="ลิ้งรูปภาพ" v-model="menu.img" class="w-full p-2" />
       </div>
@@ -42,6 +44,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   data() {
     return {
@@ -51,7 +55,22 @@ export default {
   },
   methods: {
     add() {
-      console.log(this.menu)
+      axios
+        .put('/merchant/menus', this.menu)
+        .then(() => {
+          swal.fire('สำเร็จ', 'เพิ่มเมนูสำเร็จ!', 'success')
+          this.$emit('fetch')
+          this.showModal = false
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
     }
   }
 }

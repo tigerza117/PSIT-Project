@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   props: {
     name: String,
@@ -49,7 +51,21 @@ export default {
   },
   methods: {
     add() {
-      console.log(this.shop)
+      axios
+        .patch('/merchant/shop', this.shop)
+        .then(
+          () => swal.fire('สำเร็จ', 'แก้ไขร้านค้า!', 'success'),
+          (this.showModal = false)
+        )
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
     }
   }
 }

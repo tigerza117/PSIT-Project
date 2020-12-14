@@ -19,19 +19,19 @@
         />
         <input
           placeholder="ราคาธรรมดา"
-          v-model="menu.price"
+          v-model.number="menu.price"
           class="w-full p-2"
         />
         <input
           placeholder="ราคาพิเศษ"
-          v-model="menu.extra_price"
+          v-model.number="menu.extra_price"
           class="w-full p-2"
         />
         <input placeholder="ลิ้งรูปภาพ" v-model="menu.img" class="w-full p-2" />
       </div>
       <div slot="footer">
         <button
-          @click="add"
+          @click="edit"
           class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
         >
           แก้ไข
@@ -42,8 +42,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   props: {
+    id: Number,
     name: String,
     description: String,
     price: Number,
@@ -64,8 +67,23 @@ export default {
     this.menu.img = this.img
   },
   methods: {
-    add() {
-      console.log(this.menu)
+    edit() {
+      axios
+        .patch('/merchant/menus/' + this.id, this.menu)
+        .then(() => {
+          swal.fire('สำเร็จ', 'แก้ไขเมนูสำเร็จ!', 'success')
+          this.$emit('fetch')
+          this.showModal = false
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
     }
   }
 }

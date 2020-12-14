@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <set-state-shop :open="shop.open" />
+      <set-state-shop :open="shop.open" @fetch="fetchMenus" />
 
       <div class="items-center block border rounded-lg">
         <div class="w-full">
@@ -87,9 +87,7 @@
         <set-state-order />
       </div>
 
-      <div class="my-6 text-2xl font-bold">
-        จัดการเมนู
-      </div>
+      <div class="my-6 text-2xl font-bold">จัดการเมนู <add-menu /></div>
       <div class="space-y-3 ">
         <div
           v-for="menu in menus"
@@ -114,7 +112,7 @@
               >
             </div>
           </div>
-          <edit-menu class="p-2" v-bind="menu" />
+          <edit-menu class="p-2" v-bind="menu" @fetch="fetchMenus" />
         </div>
       </div>
     </div>
@@ -127,6 +125,7 @@ import axios from 'axios'
 import SetStateOrder from '../components/merchant/SetStateOrder.vue'
 import SetStateShop from '../components/merchant/SetStateShop.vue'
 import EditMenu from '../components/merchant/EditMenu.vue'
+import AddMenu from '../components/merchant/AddMenu.vue'
 const setIntervalAsync = (fn, ms) => {
   fn().then(() => {
     setTimeout(() => setIntervalAsync(fn, ms), ms)
@@ -137,19 +136,18 @@ export default {
     LottieAnimation,
     SetStateOrder,
     SetStateShop,
-    EditMenu
+    EditMenu,
+    AddMenu
   },
   data() {
     return {
       shop: null,
       menus: [],
-      orders: [],
       interval: null
     }
   },
   created() {
     this.fetchMenus()
-    this.fetchOrders()
     this.interval = setIntervalAsync(this.fetchShop, 2000)
   },
   beforeDestroy() {
@@ -161,9 +159,6 @@ export default {
     },
     fetchMenus() {
       axios.get('/merchant/menus').then(res => (this.menus = res.data.menus))
-    },
-    fetchOrders() {
-      axios.get('/merchant/orders').then(res => (this.orders = res.data.orders))
     },
     nextOrder() {
       axios.post('/merchant/orders/next')
