@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-md mx-auto my-20 shadow-xl rounded-2xl">
-    <div class="p-5 md:bg-white-100 rounded-xl">
+  <div class="max-w-md p-4 mx-auto my-20">
+    <div class="p-5 md:border md:rounded md:shadow-lg">
       <p class="topic">Sign In</p>
       <form v-on:submit.prevent="login" class="pt-6 space-y-4 text-center">
         <div class="mb-3">
@@ -26,7 +26,7 @@
           />
         </div>
         <div class="flex items-center justify-between mb-4">
-          <button class="w-full btn btn-blue" type="submit">
+          <button class="w-full btn btn-primary" type="submit">
             Sign In
           </button>
         </div>

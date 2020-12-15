@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-md mx-auto my-20 shadow-xl rounded-2xl">
-    <div class="p-5 md:bg-white-100 rounded-xl">
+  <div class="max-w-md p-4 mx-auto my-20">
+    <div class="p-4 md:border md:rounded md:shadow-lg">
       <p class="topic">Sign Up</p>
       <form v-on:submit.prevent="register" class="pt-6 space-y-4 text-center">
         <div class="flex-box">
@@ -52,7 +52,7 @@
           />
         </div>
         <button
-          class="w-full btn btn-blue disabled:opacity-50"
+          class="w-full btn btn-primary disabled:opacity-50"
           :disabled="strength < 4"
         >
           Sign up

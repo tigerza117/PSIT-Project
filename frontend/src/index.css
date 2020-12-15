@@ -34,13 +34,13 @@
   @apply text-gray-600 bg-white hover:bg-gray-300;
 }
 .input {
-  @apply px-3 py-2 text-gray-500 align-middle border border-blue-100 rounded appearance-none focus:outline-none;
+  @apply px-3 py-2 text-gray-700 align-middle border border-blue-100 rounded appearance-none focus:outline-none;
 }
 .VuePassword__Container {
   @apply flex items-center;
 }
 .topic {
-  @apply mb-2 text-2xl text-gray-500;
+  @apply mb-2 text-2xl text-gray-700;
 }
 .menu-box {
   @apply relative transition duration-500 ease-in-out transform cursor-pointer;
