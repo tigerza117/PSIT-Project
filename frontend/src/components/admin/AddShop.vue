@@ -5,7 +5,7 @@
     </button>
     <modal v-if="showModal">
       <div slot="header">
-        เพิ่มร้าค้า
+        เพิ่มร้านค้า
         <span class="float-right cursor-pointer" @click="showModal = false"
           >X</span
         >
