@@ -137,13 +137,16 @@ def add_menu(data):
     if shop:
         body = request.get_json()
         shop = shop.getData()
+        img = body['img']
+        if img == '':
+            img = 'https://lme-me.web.app/logo.png'
         menu = Menu(
             shop_id=shop['id'],
             name = body['name'],
             description = body['description'],
             price = body['price'],
             extra_price = body['extra_price'],
-            img=body['img']
+            img=img
         )
         db.session.add(menu)
         db.session.commit()
@@ -165,11 +168,14 @@ def update_menu(data, id):
         body = request.get_json()
         menu = Menu.query.filter_by(id=id).first()
         if menu:
+            img = body['img']
+            if img == '':
+                img = 'https://lme-me.web.app/logo.png'
             menu.name = body['name']
             menu.description = body['description']
             menu.price = body['price']
             menu.extra_price = body['extra_price']
-            menu.img = body['img']
+            menu.img = img
             db.session.commit()
             return {
                 'success': True,

@@ -33,11 +33,14 @@ def add_shop(data):
     body = request.get_json()
     owner = User.query.filter_by(email=body['email']).first()
     if owner:
+        img = body['img']
+        if img == '':
+            img = 'https://lme-me.web.app/logo.png'
         shop = Shop(
             name=body["name"],
             description=body["description"],
             owner_id=owner.id,
-            img=body["img"]
+            img=img
         )
         db.session.add(shop)
         db.session.commit()
@@ -58,11 +61,14 @@ def update_shop(data, id):
     owner = User.query.filter_by(email=body['email']).first()
     if owner:
         shop = Shop.query.filter_by(id=id).first()
+        img = body['img']
+        if img == '':
+            img = 'https://lme-me.web.app/logo.png'
         if shop:
             shop.name = body['name']
             shop.description = body['description']
             shop.owner_id = owner.id
-            shop.img = body['img']
+            shop.img = img
             db.session.commit()
             return {
                 "success": True,
