@@ -14,9 +14,6 @@ export default {
       return layout ? 'layout-' + layout : 'layout-default'
     }
   },
-  mounted() {
-    console.log()
-  },
   name: 'App',
   components: {}
 }
