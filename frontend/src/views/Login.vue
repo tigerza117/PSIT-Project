@@ -64,7 +64,6 @@ export default {
         .then(res => {
           let data = res.data
           if (data.access_token) {
-            console.log(data.access_token)
             localStorage.setItem('jwt', data.access_token)
             let next = this.$route.query.nextUrl
               ? this.$route.query.nextUrl
@@ -74,7 +73,7 @@ export default {
               .then(res =>
                 localStorage.setItem('user', JSON.stringify(res.data))
               )
-            this.$router.push(next)
+              .then(() => this.$router.push(next))
           }
         })
         .catch(error => {

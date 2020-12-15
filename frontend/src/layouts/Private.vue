@@ -9,7 +9,7 @@
       <div>
         <ul class="flex space-x-4">
           <li>
-            <button v-if="backend" class="btn btn-white" @click="admin">
+            <button v-if="isAdmin" class="btn btn-white" @click="admin">
               ระบบหลังบ้าน
             </button>
           </li>
@@ -31,13 +31,13 @@
 <script>
 export default {
   computed: {
-    backend() {
+    isAdmin() {
+      let isAdmin = false
       let user = JSON.parse(localStorage.getItem('user'))
       if (user) {
-        console.log(user)
-        return user.role == 'admin'
+        isAdmin = user.role == 'admin'
       }
-      return false
+      return !(this.$route.path == '/admin') && isAdmin
     }
   },
   methods: {

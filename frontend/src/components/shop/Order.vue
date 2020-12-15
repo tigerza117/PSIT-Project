@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     order() {
-      console.log(this.menus)
       this.loading = true
       axios
         .put('/shops/' + this.$route.params.id, {
