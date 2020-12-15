@@ -12,7 +12,7 @@
       </div>
       <div slot="body" class="space-y-3">
         <input
-          placeholder="ชื่อร้าน"
+          placeholder="ชื่อเมนู"
           v-model="menu.name"
           class="w-full input"
         />
