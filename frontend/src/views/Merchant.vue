@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <set-state-shop :open="shop.open" @fetch="fetchMenus" />
+      <set-state-shop :open="shop.open" @fetch="fetchShop" />
 
       <div class="items-center block border rounded">
         <div class="w-full">
@@ -49,7 +49,7 @@
       <div v-if="shop.order" class="mt-2">
         <div class="p-4 border rounded">
           <div class="text-xl">
-            <h3>โน๊ต : {{ shop.order.note }}</h3>
+            <p class="break-words">โน๊ต : {{ shop.order.note }}</p>
           </div>
           <hr class="mt-3" />
           <div>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="flex my-6 text-2xl font-bold">
-        จัดการเมนู <add-menu class="ml-3" />
+        จัดการเมนู <add-menu class="ml-3" @fetch="fetchMenus" />
       </div>
       <div class="space-y-3 ">
         <div

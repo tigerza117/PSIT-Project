@@ -3,7 +3,7 @@
     <div class="max-h-screen mb-6 overflow-y-auto">
       <div class="flex items-center">
         <div class="mr-4 text-2xl font-bold">ร้านค้า</div>
-        <add-shop />
+        <add-shop @fetch="fetchShops" />
       </div>
       <hr class="my-3" />
       <div class="space-y-3 ">
