@@ -10,20 +10,20 @@
           >X</span
         >
       </div>
-      <div slot="body">
-        <input placeholder="ชื่อร้าน" v-model="shop.name" class="w-full p-2" />
+      <div slot="body" class="space-y-3">
+        <input placeholder="ชื่อร้าน" v-model="shop.name" class="w-full input" />
         <input
           placeholder="คำอธิบาย"
           v-model="shop.description"
-          class="w-full p-2"
+          class="w-full input"
         />
-        <input placeholder="อีเมล" v-model="shop.email" class="w-full p-2" />
-        <input placeholder="ลิ้งรูปภาพ" v-model="shop.img" class="w-full p-2" />
+        <input placeholder="อีเมล" v-model="shop.email" class="w-full input" />
+        <input placeholder="ลิ้งรูปภาพ" v-model="shop.img" class="w-full input" />
       </div>
       <div slot="footer">
         <button
           @click="add"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded hover:bg-green-600"
+          class="w-full btn btn-primary"
         >
           เพิ่มร้านค้า
         </button>
