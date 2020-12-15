@@ -26,11 +26,11 @@ def get_users(data):
     }, 200
 
 @app.route('/admin/shops', methods=['PUT'])
-@required_params({"name": str, "description": str, "email": int, "img": str})
+@required_params({"name": str, "description": str, "email": str, "img": str})
 @private()
 def add_shop(data):
     body = request.get_json()
-    owner = User.query.filter_by(email=data['email'])
+    owner = User.query.filter_by(email=body['email']).first()
     if owner:
         shop = Shop(
             name=body["name"],
@@ -44,6 +44,33 @@ def add_shop(data):
             "success": True,
             "shop": shop.getData()
         }, 201
+    return {
+        "success": False,
+        "message": "ไม่พบผู้ใช้งาน"
+    }, 400
+
+@app.route('/admin/shops/<int:id>', methods=['PATCH'])
+@required_params({"name": str, "description": str, "email": str, "img": str})
+@private()
+def update_shop(data, id):
+    body = request.get_json()
+    owner = User.query.filter_by(email=body['email']).first()
+    if owner:
+        shop = Shop.query.filter_by(id=id).first()
+        if shop:
+            shop.name = body['name']
+            shop.description = body['description']
+            shop.owner_id = owner.id
+            shop.img = body['img']
+            db.session.commit()
+            return {
+                "success": True,
+                "shop": shop.getData()
+            }, 200
+        return {
+            "success": False,
+            "message": "ไม่พบร้านค้า"
+        }, 400
     return {
         "success": False,
         "message": "ไม่พบผู้ใช้งาน"

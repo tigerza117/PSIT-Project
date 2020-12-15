@@ -33,6 +33,7 @@ class Shop(db.Model):
             'img': self.img,
             'menus': [i.get('id', 'name', 'price', 'extra_price', 'img', 'description') for i in self.menus],
             'open': self.open,
+            'owner': self.owner.getData(),
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
