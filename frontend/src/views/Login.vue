@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-md p-4 mx-auto my-20">
     <div class="p-5 md:border md:rounded md:shadow-lg">
-      <p class="topic">Sign In</p>
+      <p class="topic">เข้าสู่ระบบ</p>
       <form v-on:submit.prevent="login" class="pt-6 space-y-4 text-center">
         <div class="mb-3">
           <input
@@ -10,7 +10,7 @@
             name="email"
             type="email"
             autocomplete="email"
-            placeholder="Email"
+            placeholder="อีเมล"
             v-model="auth.email"
           />
         </div>
@@ -21,23 +21,23 @@
             name="password"
             type="password"
             autocomplete="current-password"
-            placeholder="Password"
+            placeholder="รหัสผ่าน"
             v-model="auth.password"
           />
         </div>
         <div class="flex items-center justify-between mb-4">
           <button class="w-full btn btn-primary" type="submit">
-            Sign In
+            เข้าสู่ระบบ
           </button>
         </div>
       </form>
       <div class="mt-6">
         <p class="text-sm text-center text-gray-600">
-          Don't have an account yet?
+          คุณมีบัญชีผู้ใช้หรือยัง?
           <a
             href="/register"
             class="text-blue-400 underline hover:text-blue-800"
-            >Sign up</a
+            >ลงทะเบียน</a
           >
         </p>
       </div>
