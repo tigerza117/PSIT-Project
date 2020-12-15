@@ -6,6 +6,7 @@ from ..models.shop import Shop
 from ..models import db
 from . import app, required_params, private
 from sqlalchemy import func, or_
+import hashlib
 
 @app.route('/admin/shops', methods=['GET'])
 @private()
@@ -86,6 +87,8 @@ def add_user(data, id):
         user.fname = body['fname']
         user.lname = body['lname']
         user.email = body['email']
+        if body.get('password', '') != '':
+            user.password = hashlib.md5(body['password'].encode('utf-8')).hexdigest()
         db.session.commit()
         return {
             "success": True,
