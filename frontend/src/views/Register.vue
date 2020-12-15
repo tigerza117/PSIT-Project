@@ -92,8 +92,7 @@ export default {
         /(?=.*[a-z])/.test(val) +
         /(?=.*[A-Z])/.test(val) +
         /(?=.*\d)/.test(val) +
-        /[a-zA-Z0-9]{8,}/.test(val) +
-        /[^\p{L}\d\s@#]/u.test(val)
+        /(?=.*[!@#$%^&*]){8,}/.test(val)
       this.auth.password = val
     }
   },
