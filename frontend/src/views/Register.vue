@@ -8,7 +8,7 @@
             v-model="auth.fname"
             type="text"
             placeholder="Firstname"
-            class="input"
+            class="w-full input"
           />
         </div>
         <div class="flex-box">
@@ -16,24 +16,19 @@
             v-model="auth.lname"
             type="text"
             placeholder="Lastname"
-            class="input"
+            class="w-full input"
           />
         </div>
         <div class="flex-box">
           <input
             v-model="auth.email"
-            type="text"
+            type="email"
             placeholder="Email"
-            class="input"
+            class="w-full input"
           />
         </div>
         <div class="flex-box">
-          <VuePassword
-            v-model="password"
-            id="password"
-            :strength="strength"
-            type="text"
-          >
+          <VuePassword v-model="password" id="password" :strength="strength">
             <template
               v-slot:password-input="props"
               class="control has-icons-left"
@@ -43,26 +38,28 @@
                 placeholder="Password"
                 :value="props.value"
                 @input="props.updatePassword"
-                class="input"
+                class="w-full input"
               />
             </template>
           </VuePassword>
         </div>
         <div class="flex-box">
-          <input type="text" placeholder="Confirm password" class="input" />
+          <input
+            v-model="confirm"
+            type="password"
+            placeholder="Confirm password"
+            class="w-full input"
+          />
         </div>
-        <button class="btn">
-          Sign in
-        </button>
-        <p class="text-sm text-center text-gray-600">
-          or sign in with
-        </p>
-        <button class="btn-gray">
-          GOOGLE
+        <button
+          class="w-full btn btn-blue disabled:opacity-50"
+          :disabled="strength < 4"
+        >
+          Sign up
         </button>
         <p class="text-sm text-center text-gray-600">
           Already member?
-          <a href="#" class="underline text-blue-400 hover:text-blue-800"
+          <a href="/login" class="text-blue-400 underline hover:text-blue-800"
             >Sign in</a
           >
         </p>
@@ -85,6 +82,7 @@ export default {
         lname: ''
       },
       password: '',
+      confirm: '',
       strength: 0
     }
   },
@@ -99,19 +97,40 @@ export default {
       this.auth.password = val
     }
   },
+  computed: {},
   components: {
     VuePassword
   },
   methods: {
     register() {
-      console.log(this.auth)
-      axios.put('register', this.auth).then(res => {
-        let data = res.data
-        if (data.success) {
-          swal.fire('Register Scuess', '', 'success')
-          this.$router.push('/login')
-        }
-      })
+      if (this.password != this.confirm) {
+        swal.fire('ไม่สำเร็จ', 'รหัสผ่านไม่ตรงกัน', 'error')
+        this.password = ''
+        this.confirm = ''
+        return
+      }
+      axios
+        .put('register', this.auth)
+        .then(res => {
+          let data = res.data
+          if (data.success) {
+            swal.fire(
+              'สำเร็จ',
+              'คุณได้สมัคร Let me eat เรียบร้อยแล้วสามารถ Login ได้ทันที',
+              'success'
+            )
+            this.$router.push('/login')
+          }
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
     }
   }
 }

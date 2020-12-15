@@ -1,17 +1,9 @@
 <template>
   <div class="my-3">
-    <button
-      v-if="open"
-      @click="clickClose"
-      class="w-full p-4 text-2xl text-white bg-red-500"
-    >
+    <button v-if="open" @click="clickClose" class="btn btn-state btn-error">
       ปิดร้าน
     </button>
-    <button
-      v-else
-      @click="clickOpen"
-      class="w-full p-4 text-2xl text-white bg-green-500"
-    >
+    <button v-else @click="clickOpen" class="btn btn-state btn-primary">
       เปิดร้าน
     </button>
   </div>
@@ -33,3 +25,9 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+.btn-state {
+  @apply w-full text-xl p-4 !important;
+}
+</style>

@@ -3,13 +3,10 @@
     <div v-if="!shop"></div>
     <div v-else>
       <div>
-        <div class="my-6 text-4xl font-bold">
+        <div class="items-center my-6 text-2xl font-bold md:text-4xl">
           จัดการร้านค้า
           <span class="float-right"
-            ><button
-              class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
-              v-on:click="goShop"
-            >
+            ><button class="text-base btn btn-outline" v-on:click="goShop">
               กลับไปร้าน
             </button></span
           >
@@ -18,7 +15,7 @@
 
       <set-state-shop :open="shop.open" @fetch="fetchMenus" />
 
-      <div class="items-center block border rounded-lg">
+      <div class="items-center block border rounded">
         <div class="w-full">
           <div class="flex justify-center">
             <lottie-animation
@@ -43,14 +40,14 @@
         <button
           v-if="shop.queue == 'no queue' && shop.waiting > 0"
           @click="nextOrder"
-          class="w-full p-4 text-white bg-green-500 rounded-b-lg"
+          class="w-full p-4 text-lg rounded-b btn-none btn-primary"
         >
           รับออเดอร์
         </button>
       </div>
 
       <div v-if="shop.order" class="mt-2">
-        <div class="p-4 border rounded-lg">
+        <div class="p-4 border rounded">
           <div class="text-xl">
             <h3>โน๊ต : {{ shop.order.note }}</h3>
           </div>
@@ -87,7 +84,9 @@
         <set-state-order />
       </div>
 
-      <div class="my-6 text-2xl font-bold">จัดการเมนู <add-menu /></div>
+      <div class="flex my-6 text-2xl font-bold">
+        จัดการเมนู <add-menu class="ml-3" />
+      </div>
       <div class="space-y-3 ">
         <div
           v-for="menu in menus"

@@ -1,9 +1,11 @@
 <template>
   <div class="relative">
     <div class="fixed inset-x-0 bottom-0 z-20 w-full bg-white border-t">
-      <div class="p-4">
-        <div class="w-64 mx-auto btn-order" @click="showModal = true">
-          สั่งอาหาร
+      <div class="p-2">
+        <div class="w-64 max-w-xl mx-auto" @click="showModal = true">
+          <button class="w-full btn btn-primary">
+            สั่งอาหาร
+          </button>
         </div>
       </div>
     </div>
@@ -25,17 +27,14 @@
           />
         </div>
         <textarea
-          class="w-full p-4 mt-2 border rounded"
+          class="w-full mt-3 input"
           v-model="note"
           placeholder="โน๊ต..."
         >
         </textarea>
       </div>
       <div slot="footer">
-        <button
-          @click="order"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
-        >
+        <button @click="order" class="w-full btn btn-primary">
           ยืนยัน
         </button>
       </div>
@@ -97,9 +96,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-.btn-order {
-  @apply p-2 max-w-xl w-full text-lg text-center text-white bg-green-500 transition duration-500 rounded-lg hover:bg-green-600;
-}
-</style>

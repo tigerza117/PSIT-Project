@@ -1,15 +1,9 @@
 <template>
   <div class="block mt-3 space-x-0 space-y-3 md:flex md:space-y-0 md:space-x-3">
-    <button
-      @click="finish"
-      class="w-full p-4 text-2xl text-white bg-green-500 md:w-1/2"
-    >
+    <button @click="finish" class="btn btn-primary btn-state">
       เสร็จออเดอร์
     </button>
-    <button
-      @click="next"
-      class="w-full p-4 text-2xl text-white bg-yellow-500 md:w-1/2"
-    >
+    <button @click="next" class="btn btn-warning btn-state">
       ออเดอร์ถัดไป
     </button>
   </div>
@@ -28,3 +22,9 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+.btn-state {
+  @apply w-full text-xl  md:w-1/2 p-4 !important;
+}
+</style>

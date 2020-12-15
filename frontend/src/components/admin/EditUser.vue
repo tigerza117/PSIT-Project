@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="w-full p-2 border md:w-auto whitespace-nowrap "
+      class="w-full btn btn-outline whitespace-nowrap "
       @click="showModal = true"
     >
       ตั้งค่า
@@ -13,21 +13,26 @@
           >X</span
         >
       </div>
-      <div slot="body">
-        <input placeholder="ชื่อร้าน" v-model="user.fname" class="w-full p-2" />
-        <input placeholder="คำอธิบาย" v-model="user.lname" class="w-full p-2" />
-        <input placeholder="อีเมล" v-model="user.email" class="w-full p-2" />
+      <div slot="body" class="space-y-3">
+        <input
+          placeholder="ชื่อร้าน"
+          v-model="user.fname"
+          class="w-full input"
+        />
+        <input
+          placeholder="คำอธิบาย"
+          v-model="user.lname"
+          class="w-full input"
+        />
+        <input placeholder="อีเมล" v-model="user.email" class="w-full input" />
         <input
           placeholder="ลิ้งรูปภาพ"
           v-model="user.password"
-          class="w-full p-2"
+          class="w-full input"
         />
       </div>
       <div slot="footer">
-        <button
-          @click="edit"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
-        >
+        <button @click="edit" class="w-full btn btn-primary">
           แก้ไขร้านค้า
         </button>
       </div>

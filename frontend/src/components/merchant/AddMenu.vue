@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="p-2 m-2 border" @click="showModal = true">
+    <button class="text-lg btn btn-primary" @click="showModal = true">
       เพิ่มเมนู
     </button>
     <modal v-if="showModal">
@@ -10,32 +10,37 @@
           >X</span
         >
       </div>
-      <div slot="body">
-        <input placeholder="ชื่อร้าน" v-model="menu.name" class="w-full p-2" />
+      <div slot="body" class="space-y-3">
+        <input
+          placeholder="ชื่อร้าน"
+          v-model="menu.name"
+          class="w-full input"
+        />
         <input
           placeholder="คำอธิบาย"
           v-model="menu.description"
-          class="w-full p-2"
+          class="w-full input"
         />
         <input
           placeholder="ราคาธรรมดา"
           v-model.number="menu.price"
-          class="w-full p-2"
+          class="w-full input"
           type="number"
         />
         <input
           placeholder="ราคาพิเศษ"
           v-model.number="menu.extra_price"
-          class="w-full p-2"
+          class="w-full input"
           type="number"
         />
-        <input placeholder="ลิ้งรูปภาพ" v-model="menu.img" class="w-full p-2" />
+        <input
+          placeholder="ลิ้งรูปภาพ"
+          v-model="menu.img"
+          class="w-full input"
+        />
       </div>
       <div slot="footer">
-        <button
-          @click="add"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
-        >
+        <button @click="add" class="w-full btn btn-primary">
           เพิ่ม
         </button>
       </div>
@@ -50,7 +55,13 @@ export default {
   data() {
     return {
       showModal: false,
-      menu: { name: '', description: '', price: 0, extra_price: 0, img: '' }
+      menu: {
+        name: '',
+        description: '',
+        price: null,
+        extra_price: null,
+        img: ''
+      }
     }
   },
   methods: {

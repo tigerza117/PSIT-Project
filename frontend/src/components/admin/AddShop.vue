@@ -1,9 +1,6 @@
 <template>
   <div>
-    <button
-      class="w-full p-2 text-sm border md:w-auto"
-      @click="showModal = true"
-    >
+    <button class="w-full btn btn-primary md:w-auto" @click="showModal = true">
       เพิ่มร้านค้า
     </button>
     <modal v-if="showModal">
@@ -26,7 +23,7 @@
       <div slot="footer">
         <button
           @click="add"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
+          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded hover:bg-green-600"
         >
           เพิ่มร้านค้า
         </button>

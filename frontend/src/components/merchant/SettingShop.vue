@@ -20,7 +20,7 @@
       <div slot="footer">
         <button
           @click="add"
-          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
+          class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded hover:bg-green-600"
         >
           ตั้งค่า
         </button>

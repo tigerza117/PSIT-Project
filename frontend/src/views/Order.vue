@@ -6,7 +6,7 @@
         {{ shop.name
         }}<span class="float-right"
           ><button
-            class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
+            class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded"
             v-on:click="goShop"
           >
             กลับไปร้าน
@@ -14,7 +14,7 @@
         >
       </div>
 
-      <div class="flex items-center border rounded-lg">
+      <div class="flex items-center border rounded">
         <div class="w-full">
           <div class="flex justify-center">
             <lottie-animation
@@ -45,7 +45,7 @@
       </div>
 
       <div v-if="order" class="mt-2">
-        <div class="p-4 border rounded-lg">
+        <div class="p-4 border rounded">
           <div class="text-xl">
             <h2>คิว : {{ order.queue }}</h2>
             <h3>สถานะ : {{ status() }}</h3>
@@ -82,7 +82,7 @@
         </div>
         <button
           v-if="order.status == 'ordering'"
-          class="w-full p-3 mt-2 text-lg text-white bg-red-500 rounded-lg"
+          class="w-full p-3 mt-2 text-lg text-white bg-red-500 rounded"
           @click="delOrder"
         >
           ยกเลิกออเดอร์
@@ -182,6 +182,6 @@ export default {
 
 <style scoped lang="postcss">
 .name-menu {
-  @apply p-2 mx-2 mt-2 bg-white rounded-lg;
+  @apply p-2 mx-2 mt-2 bg-white rounded;
 }
 </style>

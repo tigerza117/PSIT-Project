@@ -6,21 +6,18 @@
         <span class="mr-4 text-3xl font-bold">{{ shop.name }}</span>
         <button
           v-if="isMerchant"
-          class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
+          class="btn btn-primary"
           v-on:click="goMerchant"
         >
           จัดการร้าน</button
         ><span class="float-right"
-          ><button
-            class="p-2 px-4 text-xl text-center text-gray-700 transition duration-500 border rounded-lg"
-            v-on:click="goHome"
-          >
+          ><button class="btn btn-outline" v-on:click="goHome">
             กลับ
           </button></span
         >
       </div>
 
-      <div class="flex items-center border rounded-lg">
+      <div class="flex items-center border rounded">
         <div class="w-full">
           <div class="flex justify-center">
             <lottie-animation
@@ -152,6 +149,6 @@ export default {
 
 <style scoped lang="postcss">
 .name-menu {
-  @apply p-2 mx-2 mt-2 bg-white rounded-lg;
+  @apply p-2 mx-2 mt-2 bg-white rounded;
 }
 </style>

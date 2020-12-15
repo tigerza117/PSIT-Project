@@ -27,18 +27,21 @@
           </select>
         </div>
         <div class="w-full space-x-3 text-center">
-          <button class="btn-count" @click="total = total > 1 ? total - 1 : 1">
+          <button
+            class="btn btn-outline btn-small"
+            @click="total = total > 1 ? total - 1 : 1"
+          >
             -
           </button>
           <span>{{ total }}</span>
-          <button class=" btn-count" @click="total += 1">
+          <button class=" btn btn-outline btn-small" @click="total += 1">
             +
           </button>
         </div>
       </div>
       <div slot="footer">
         <button
-          class="w-full p-3 text-xl text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
+          class="w-full btn btn-primary"
           @click="$emit('selected', selected)"
         >
           เลือก

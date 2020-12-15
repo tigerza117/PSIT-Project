@@ -4,7 +4,7 @@
     <!--Card-->
     <div class="absolute top-0">
       <div>
-        <div class="p-2 mx-2 mt-2 bg-white rounded-lg">
+        <div class="p-2 mx-2 mt-2 bg-white rounded">
           <div class="text-base">
             {{ name }}
           </div>

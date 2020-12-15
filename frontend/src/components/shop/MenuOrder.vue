@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex space-x-2 border rounded-lg">
+    <div class="flex space-x-2 border rounded">
       <div class="w-1/4 h-16 lg:h-28">
         <img class="object-cover w-full h-full rounded-l-lg" :src="img" />
       </div>
@@ -19,11 +19,11 @@
         <div
           class="absolute inset-y-0 right-0 flex items-center justify-center pr-4 my-auto space-x-2 text-center"
         >
-          <button class="btn-count" @click="$emit('decrease')">
+          <button class="btn btn-outline btn-small" @click="$emit('decrease')">
             -
           </button>
           <span>{{ total }}</span>
-          <button class=" btn-count" @click="$emit('increase')">
+          <button class="btn btn-outline btn-small" @click="$emit('increase')">
             +
           </button>
         </div>
@@ -48,9 +48,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-.btn-count {
-  @apply p-2 px-4 border rounded;
-}
-</style>

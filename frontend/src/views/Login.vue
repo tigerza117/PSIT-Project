@@ -5,10 +5,10 @@
       <form v-on:submit.prevent="login" class="pt-6 space-y-4 text-center">
         <div class="mb-3">
           <input
-            class="input"
+            class="w-full input"
             id="email"
             name="email"
-            type="text"
+            type="email"
             autocomplete="email"
             placeholder="Email"
             v-model="auth.email"
@@ -16,7 +16,7 @@
         </div>
         <div class="mb-3">
           <input
-            class="input"
+            class="w-full input"
             id="password"
             name="password"
             type="password"
@@ -26,21 +26,17 @@
           />
         </div>
         <div class="flex items-center justify-between mb-4">
-          <button class="btn" type="submit">
+          <button class="w-full btn btn-blue" type="submit">
             Sign In
           </button>
         </div>
-        <div class="mb-4">
-          <p class="text-sm text-center text-gray-600">or sign in with</p>
-        </div>
-        <button class="btn-gray">
-          GOOGLE
-        </button>
       </form>
       <div class="mt-6">
         <p class="text-sm text-center text-gray-600">
           Don't have an account yet?
-          <a href="#" class="text-blue-400 underline hover:text-blue-800"
+          <a
+            href="/register"
+            class="text-blue-400 underline hover:text-blue-800"
             >Sign up</a
           >
         </p>

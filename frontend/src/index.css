@@ -3,6 +3,55 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn {
+  @apply px-4 py-2 rounded focus:outline-none;
+}
+.btn-none {
+  @apply px-4 py-2 focus:outline-none;
+}
+.btn-small {
+  @apply px-3 py-1 font-normal !important;
+}
+.btn-outline {
+  @apply border;
+}
+.btn-warning {
+  @apply text-white bg-yellow-500 hover:bg-yellow-700;
+}
+.btn-blue {
+  @apply text-white bg-blue-500 hover:bg-blue-700;
+}
+.btn-gray {
+  @apply text-white bg-gray-300 hover:bg-gray-500;
+}
+.btn-primary {
+  @apply text-white bg-green-500 hover:bg-green-700;
+}
+.btn-error {
+  @apply text-white bg-red-500 hover:bg-red-700;
+}
+.btn-white {
+  @apply text-gray-600 bg-white hover:bg-gray-300;
+}
+.input {
+  @apply px-3 py-2 text-gray-500 align-middle border border-blue-100 rounded appearance-none focus:outline-none;
+}
+.VuePassword__Container {
+  @apply flex items-center;
+}
+.topic {
+  @apply mb-2 text-2xl text-gray-500;
+}
+.menu-box {
+  @apply relative transition duration-500 ease-in-out transform cursor-pointer;
+}
+.nav-page {
+  @apply fixed top-0 z-20 flex flex-wrap items-center w-full p-4 px-6 m-auto bg-green-500 place-content-between;
+}
+.img-menu {
+  @apply object-cover w-full h-32 rounded md:h-48 lg:h-64;
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -22,7 +71,7 @@
 }
 
 .modal-container {
-  @apply max-w-xl p-4 rounded-lg;
+  @apply max-w-xl p-4 rounded;
   margin: 0px auto;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);

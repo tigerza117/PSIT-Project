@@ -2,17 +2,19 @@
   <div>
     <div class="nav-page">
       <!--Logo-->
-      <div class="text-4xl font-bold text-white" @click="home">LME</div>
+      <div class="text-4xl font-bold text-white cursor-pointer" @click="home">
+        LME
+      </div>
       <!--menu-->
       <div>
         <ul class="flex space-x-4">
           <li>
-            <button v-if="backend" class="btn-nav" @click="admin">
+            <button v-if="backend" class="btn btn-white" @click="admin">
               ระบบหลังบ้าน
             </button>
           </li>
           <li>
-            <button class="btn-nav" @click="logout">
+            <button class="btn btn-error" @click="logout">
               Logout
             </button>
           </li>
