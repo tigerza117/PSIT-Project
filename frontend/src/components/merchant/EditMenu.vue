@@ -73,7 +73,6 @@ export default {
         .then(() => {
           swal.fire('สำเร็จ', 'แก้ไขเมนูสำเร็จ!', 'success')
           this.$emit('fetch')
-          this.showModal = false
         })
         .catch(error => {
           let res = error.response
@@ -84,6 +83,7 @@ export default {
             }
           }
         })
+        .finally(() => (this.showModal = false))
     }
   }
 }

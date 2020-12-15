@@ -53,10 +53,9 @@ export default {
     add() {
       axios
         .patch('/merchant/shop', this.shop)
-        .then(
-          () => swal.fire('สำเร็จ', 'แก้ไขร้านค้า!', 'success'),
-          (this.showModal = false)
-        )
+        .then(() => {
+          swal.fire('สำเร็จ', 'แก้ไขร้านค้า!', 'success')
+        })
         .catch(error => {
           let res = error.response
           if (res) {
@@ -66,6 +65,7 @@ export default {
             }
           }
         })
+        .finally(() => (this.showModal = false))
     }
   }
 }
