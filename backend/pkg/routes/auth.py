@@ -16,7 +16,6 @@ def login():
     if user:
         if user.password == hashlib.md5(password.encode('utf-8')).hexdigest():
             encoded_jwt = jwt.encode({'id': user.id,'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, 'secret', algorithm='HS256')
-            print(encoded_jwt)
             return {
                 'success': True,
                 'access_token': encoded_jwt.decode('utf-8')
