@@ -49,7 +49,7 @@
           <div class="text-xl">
             <h2>คิว : {{ order.queue }}</h2>
             <h3>สถานะ : {{ status() }}</h3>
-            <h3>โน๊ต : {{ order.note }}</h3>
+            <p class="break-words">โน๊ต : {{ order.note }}</p>
           </div>
           <hr class="mt-3" />
           <div>
