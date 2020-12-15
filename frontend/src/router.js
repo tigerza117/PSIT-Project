@@ -80,6 +80,7 @@ const router = new Router({
       name: 'admin',
       meta: {
         requiresAuth: true,
+        is_admin: true,
         layout: 'private'
       }
     }

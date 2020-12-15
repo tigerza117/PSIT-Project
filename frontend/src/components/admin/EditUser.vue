@@ -25,7 +25,7 @@
       </div>
       <div slot="footer">
         <button
-          @click="add"
+          @click="edit"
           class="w-full p-3 text-lg text-center text-white transition duration-500 bg-green-500 rounded-lg hover:bg-green-600"
         >
           แก้ไขร้านค้า
@@ -36,8 +36,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   props: {
+    id: Number,
     fname: String,
     lname: String,
     email: String
@@ -54,8 +57,24 @@ export default {
     this.user.email = this.email
   },
   methods: {
-    add() {
-      console.log(this.user)
+    edit() {
+      axios
+        .patch('/admin/users/' + this.id, this.user)
+        .then(() => {
+          swal.fire('สำเร็จ', 'แก้ไขเมนูสำเร็จ!', 'success')
+          this.$emit('fetch')
+          this.showModal = false
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
+        .finally(() => (this.showModal = false))
     }
   }
 }

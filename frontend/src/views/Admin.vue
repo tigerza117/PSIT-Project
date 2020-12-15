@@ -24,7 +24,7 @@
             <div class="text-xl font-semibold">{{ shop.name }}</div>
             <div class="text-gray-500 ">{{ shop.description }}</div>
           </div>
-          <setting-shop class="p-2" v-bind="shop" />
+          <edit-shop class="p-2" v-bind="shop" @fetch="fetchShops" />
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="text-gray-500 ">{{ user.email }}</div>
           </div>
-          <setting-user class="p-2" v-bind="user" />
+          <edit-user class="p-2" v-bind="user" @fetch="fetchUsers" />
         </div>
       </div>
     </div>
@@ -57,10 +57,10 @@
 <script>
 import axios from 'axios'
 import AddShop from '../components/admin/AddShop.vue'
-import SettingShop from '../components/admin/SettingShop.vue'
-import SettingUser from '../components/admin/SettingUser.vue'
+import EditShop from '../components/admin/EditShop.vue'
+import EditUser from '../components/admin/EditUser.vue'
 export default {
-  components: { AddShop, SettingShop, SettingUser },
+  components: { AddShop, EditShop, EditUser },
   created() {
     this.fetchUsers()
     this.fetchShops()

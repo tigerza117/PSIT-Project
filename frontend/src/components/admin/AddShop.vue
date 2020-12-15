@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
   data() {
     return {
@@ -45,7 +47,22 @@ export default {
   },
   methods: {
     add() {
-      console.log(this.shop)
+      axios
+        .put('/admin/shops', this.shop)
+        .then(() => {
+          swal.fire('สำเร็จ', 'เพิ่มร้านสำเร็จ!', 'success')
+          this.$emit('fetch')
+        })
+        .catch(error => {
+          let res = error.response
+          if (res) {
+            if (400 === res.status) {
+              let data = res.data
+              swal.fire('ไม่สำเร็จ', data.message, 'error')
+            }
+          }
+        })
+        .finally(() => (this.showModal = false))
     }
   }
 }
