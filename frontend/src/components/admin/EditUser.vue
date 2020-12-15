@@ -8,32 +8,33 @@
     </button>
     <modal v-if="showModal">
       <div slot="header">
-        แก้ไข User
+        แก้ไขบัญชีผู้ใช้
         <span class="float-right cursor-pointer" @click="showModal = false"
           >X</span
         >
       </div>
       <div slot="body" class="space-y-3">
         <input
-          placeholder="ชื่อร้าน"
+          placeholder="ชื่อจริง"
           v-model="user.fname"
           class="w-full input"
         />
         <input
-          placeholder="คำอธิบาย"
+          placeholder="นามสกุล"
           v-model="user.lname"
           class="w-full input"
         />
         <input placeholder="อีเมล" v-model="user.email" class="w-full input" />
         <input
-          placeholder="ลิ้งรูปภาพ"
+          placeholder="รหัสผ่าน"
           v-model="user.password"
           class="w-full input"
+          type="password"
         />
       </div>
       <div slot="footer">
         <button @click="edit" class="w-full btn btn-primary">
-          แก้ไขร้านค้า
+          แก้ไข
         </button>
       </div>
     </modal>
@@ -66,7 +67,7 @@ export default {
       axios
         .patch('/admin/users/' + this.id, this.user)
         .then(() => {
-          swal.fire('สำเร็จ', 'แก้ไขเมนูสำเร็จ!', 'success')
+          swal.fire('สำเร็จ', 'แก้ไขบัญชีผู้ใช้สำเร็จ!', 'success')
           this.$emit('fetch')
           this.showModal = false
         })

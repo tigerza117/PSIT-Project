@@ -1,13 +1,13 @@
 <template>
   <div class="max-w-md p-4 mx-auto my-20">
     <div class="p-4 md:border md:rounded md:shadow-lg">
-      <p class="topic">Sign Up</p>
+      <p class="topic">ลงทะเบียน</p>
       <form v-on:submit.prevent="register" class="pt-6 space-y-4 text-center">
         <div class="flex-box">
           <input
             v-model="auth.fname"
             type="text"
-            placeholder="Firstname"
+            placeholder="ชื่อจริง"
             class="w-full input"
           />
         </div>
@@ -15,7 +15,7 @@
           <input
             v-model="auth.lname"
             type="text"
-            placeholder="Lastname"
+            placeholder="นามสกุล"
             class="w-full input"
           />
         </div>
@@ -23,7 +23,7 @@
           <input
             v-model="auth.email"
             type="email"
-            placeholder="Email"
+            placeholder="อีเมล"
             class="w-full input"
           />
         </div>
@@ -35,7 +35,7 @@
             >
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="รหัสผ่าน"
                 :value="props.value"
                 @input="props.updatePassword"
                 class="w-full input"
@@ -47,7 +47,7 @@
           <input
             v-model="confirm"
             type="password"
-            placeholder="Confirm password"
+            placeholder="ยืนยันรหัสผ่าน"
             class="w-full input"
           />
         </div>
@@ -55,12 +55,12 @@
           class="w-full btn btn-primary disabled:opacity-50"
           :disabled="strength < 4"
         >
-          Sign up
+          ลงทะเบียน
         </button>
         <p class="text-sm text-center text-gray-600">
-          Already member?
+          มีบัญชีอยู่แล้ว?
           <a href="/login" class="text-blue-400 underline hover:text-blue-800"
-            >Sign in</a
+            >เข้าสู่ระบบ</a
           >
         </p>
       </form>

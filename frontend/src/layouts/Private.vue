@@ -15,7 +15,7 @@
           </li>
           <li>
             <button class="btn btn-error" @click="logout">
-              Logout
+              ออกจากระบบ
             </button>
           </li>
         </ul>
