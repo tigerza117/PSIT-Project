@@ -13,7 +13,9 @@ from flask.globals import request
 def get_order_byID(data, id):
     order = Order.query.filter_by(id=id).first()
     if order:
-        return {'success': True, 'order': order.getData()}, 200
+        if order.customer_id == data['id']:
+            return {'success': True, 'order': order.getData()}, 200
+        return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
     return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
 
 @app.route('/orders/<int:id>', methods=['DELETE'])
@@ -21,9 +23,11 @@ def get_order_byID(data, id):
 def del_order_byID(data, id):
     order = Order.query.filter_by(id=id).first()
     if order:
-        order.status = 'cancelled'
-        db.session.commit()
-        return {'success': True}, 200
+        if order.customer_id == data['id']:
+            order.status = 'cancelled'
+            db.session.commit()
+            return {'success': True}, 200
+        return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
     return {'success': False, 'message': 'ไม่พบออเดอร์นี้'}, 400
 
 @app.route('/shops/<int:id>', methods=['PUT'])

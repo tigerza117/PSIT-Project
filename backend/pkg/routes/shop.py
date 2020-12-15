@@ -28,7 +28,9 @@ def get_shop_byID(data, id):
         result = shop.get('name', 'menus', 'open', 'owner_id')
         if order:
             queue = order.get('queue')
-            result.update({'order': order.getData()})
+        user_order = Order.query.filter(func.DATE(Order.created_at) == date.today(), Order.shop_id==id, or_(Order.status == 'ordering', Order.status == 'waiting'), Order.customer_id == data['id']).first()
+        if user_order:
+            result.update({'order': user_order.getData()})
         result.update(queue)
         result.update({'waiting': waiting}),
         return {
