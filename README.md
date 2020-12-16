@@ -17,6 +17,22 @@
 - [x] Merchant
 - [x] Shop
 - [x] Order
+
+## Back-end
+
+- [x] Flask
+- [x] PythonSQL
+
+
+## Front-end
+
+- [x] Vue.js
+- [x] Tailwind-css
+
+## Databas
+
+- [x] MySQL
+
 ## Preview
 <img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/login.jpg?raw=true" width="35%" style="center"><br><br>
 เข้าสู่ระบบ : กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ<br><br><br>
