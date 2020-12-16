@@ -5,13 +5,13 @@
 ## Test user
 - user
   - user member : member@test.com 
-  - pass : Tadaohmye1234+++@
+  - password : Tadaohmye1234+++@
 - merchant
   - user merchant : merchant@test.com
-  - pass : Mer135@
+  - password : Mer135@
 - admin
   - user admin : admin@test.com
-  - pass : Admin135@
+  - password : Admin135@
 
 ## Features
 
