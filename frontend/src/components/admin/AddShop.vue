@@ -11,20 +11,25 @@
         >
       </div>
       <div slot="body" class="space-y-3">
-        <input placeholder="ชื่อร้าน" v-model="shop.name" class="w-full input" />
+        <input
+          placeholder="ชื่อร้าน"
+          v-model="shop.name"
+          class="w-full input"
+        />
         <input
           placeholder="คำอธิบาย"
           v-model="shop.description"
           class="w-full input"
         />
         <input placeholder="อีเมล" v-model="shop.email" class="w-full input" />
-        <input placeholder="ลิ้งรูปภาพ" v-model="shop.img" class="w-full input" />
+        <input
+          placeholder="ลิ้งรูปภาพ"
+          v-model="shop.img"
+          class="w-full input"
+        />
       </div>
       <div slot="footer">
-        <button
-          @click="add"
-          class="w-full btn btn-primary"
-        >
+        <button @click="add" class="w-full btn btn-primary">
           เพิ่มร้านค้า
         </button>
       </div>
