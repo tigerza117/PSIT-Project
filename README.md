@@ -19,7 +19,7 @@
 - [x] Order
 ## Preview
 <img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/login.jpg?raw=true" width="35%" style="center"><br>
-เข้าสู่ระบบ : กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ<br><br><br>
+เข้าสู่ระบบ : กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ<br>
 <img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/register.jpg?raw=true" width="35%" style="center"><br>
 ลงทะเบียน : ลงทะเบียนเพื่อนำบัญชีไปเข้าสู่ะบบ<br>
 <img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/home.jpg?raw=true" width="35%" style="center"><br>
