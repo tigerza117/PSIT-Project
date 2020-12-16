@@ -18,20 +18,18 @@
 - [x] Shop
 - [x] Order
 
-## Back-end
+## Tools
 
-- [x] Flask
-- [x] PythonSQL
+- Back-end
+  - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+  - [PythonSQL](https://www.w3schools.com/python/python_mysql_getstarted.asp)
+- Front-end
+  - [Vue.js](https://vuejs.org/)
+  - [Tailwind-css](https://tailwindcss.com/)
+- Database
+  - [MySQL](https://www.mysql.com/)
 
-
-## Front-end
-
-- [x] Vue.js
-- [x] Tailwind-css
-
-## Databas
-
-- [x] MySQL
+##
 
 ## Preview
 <img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/login.jpg?raw=true" width="35%" style="center"><br><br>
