@@ -6,7 +6,7 @@
 - user
   - user member : member@test.com 
   - pass : Tadaohmye1234+++@
- - merchant
+- merchant
   - user merchant : merchant@test.com
   - pass : Mer135@
 - admin
