@@ -80,5 +80,5 @@
 | <img src="https://avatars3.githubusercontent.com/u/73677460" width="70"> |   63070040   | เชาว์วัฒน์ อินทรพานิชย์ | [goteninwza007](https://github.com/goteninwza007) |         Frontnend Developer          |
 | <img src="https://avatars3.githubusercontent.com/u/73677600" width="70"> |   63070076   |   ธนวัฒน์ จันต๊ะวงค์    |      [pp3times](https://github.com/pp3times)      |         Frontnend Developer          |
 
-### สปอนเซอร์โดย
-<img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/sponsor.jpg?raw=true" width="50%" style="center"><br><br>
+### สปอนเซอร์โดย EZ-VPS
+<img src="https://github.com/tigerza117/PSIT-Project/blob/master/lme/sponsor.jpg?raw=true" style="center"><br><br>
